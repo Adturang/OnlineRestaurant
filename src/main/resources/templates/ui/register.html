@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/7c8de56994.js" crossorigin="anonymous"></script>
+    <script src="/js/in.js"></script> 
+</head>
+<body>
+<form name="regis" onsubmit="return validate()" action="/save" method="post">
+<div class="login-box">
+    <h1>Register</h1>
+    <div id="err"></div>
+    <div class="textbox">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Enter Name" name="name"/>
+    </div>
+    <div class="textbox">
+        <i class="fa-solid fa-square-phone"></i>
+        <input type="number" placeholder="Enter Number" name="number"/>
+    </div>
+    <div class="textbox">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Enter Email" name="email"/>
+    </div>
+    <div class="textbox">
+        <i class="fa-solid fa-location-dot"></i>
+        <input type="text" placeholder="Enter Address" name="address"/>
+    </div>   
+    <div class="textbox">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Enter Username" name="userName"/>
+    </div>
+    <div class="textbox">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Enter Password" name="password" />
+    </div>
+    <div class="textbox">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Confirm Password" name="cnfpass"/>
+    </div>
+    <!--  <input type="button" class="btn" value="Register">
+     <button class="btn" onclick="validate()">Register</button>-->
+    <input class="btn" type="submit" name="Register" value="Register">
+   
+  
+</div>    
+</form>
+</body>
+</html>

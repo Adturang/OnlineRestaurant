@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/7c8de56994.js" crossorigin="anonymous"></script>
+    <script src="/js/in.js"></script>
+</head>
+<body>
+<form name="log" onsubmit="return logValid()" action="/auth" method="post">
+<div class="login-box">
+    <h1>Login</h1>
+    <div id="err"></div>
+    <div class="textbox">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Enter Username" name="userName" />
+    </div>
+    <div class="textbox">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Enter Password" name="password"/>
+    </div>
+    <input type="submit" class="btn" value="Login" name="Login">
+    <p>New Here?<a href="/showRegForm">Create an Account </a></p>
+</div>   
+</form> 
+</body>
+</html>
