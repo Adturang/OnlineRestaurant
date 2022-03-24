@@ -29,5 +29,4 @@ public class Registration {
 	String userName;
 	String password;
 	String role="User";
-
 }

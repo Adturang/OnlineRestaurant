@@ -1,5 +1,7 @@
 package com.onlineRst.onlineRestaurant;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +24,12 @@ public class RestaurantController {
 	}
 	
 	@GetMapping("/showLoginForm")
-	public String loginForm() {
+	public String loginForm(HttpSession session, Model model) {
 		//model.addAttribute("title",title);
+		if(session.getAttribute("msg")!=null) {
+			model.addAttribute("MSG", session.getAttribute("msg"));
+			session.removeAttribute("msg");
+		}
 		return "ui/login";
 	}
 	
@@ -43,11 +49,17 @@ public class RestaurantController {
 	
 	//@Value("${bank.welcome}")String welmsg;
 	@PostMapping("/save")
-	public String save(Model model,Registration reg) {
+	public String save(Model model,Registration reg,HttpSession session) {
 		//model.addAttribute("welcome",welmsg);
 		model.addAttribute("acct",reg);
 		System.out.println("HelloAccount");
-		repo.save(reg);
-		return "ui/success";
+		;
+		if(repo.save(reg)!=null){
+			session.setAttribute("msg", "Successfully Registerd.");
+		}
+		else {
+			session.setAttribute("msg", "Somethong Went wrong.!!!");
+		}
+		return "redirect:/showLoginForm";
 	}
 }
