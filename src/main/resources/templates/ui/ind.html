@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="/css/index-header.css">
+    <link rel="stylesheet" href="/css/index-nav.css">
+    <link rel="stylesheet" href="/css/index-footer.css">
+    <link rel="stylesheet" href="/css/index-center.css">
+    <script src="/jquery/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <div id="outer-div">
+      <header>
+        <div id="header">
+            <div id="header-left-logo">
+                
+                    <img src="/img/res.png" alt="logo not available !" height="50px" width="50px">
+                
+            </div>
+            <div id="header-center">
+                <center>
+                    <span id="header-title">Welcome To Baba Da Dhaba</span>
+                </center>
+                
+            </div>
+            <div id="header-rigth-user">
+            	<div th:text="${session.sesName}"></div>
+                <a href="#">
+                    <img src="/img/user.png" alt="user not available!" id="user">
+                </a>
+                <a href="#">
+                    <img src="/img/cart.png" alt="image not available!" id="cart">
+                </a>
+            </div>
+        </div>
+      </header>
+      <nav id="nav">
+        <div id="nav-left"></div>
+        <div id="nav-center">
+            <ul id="nav-menu-list">
+                <li><a href="#" id="li-a">Home</a></li>
+                <li><a href="#aboutus" id="li-a">AboutUs</a></li>
+                <li><a href="#" id="li-a">Menu</a></li>
+                <li><a href="#contactus" id="li-a">ContactUs</a></li>
+            </ul>
+        </div>
+        <div id="nav-right"></div>
+     </nav>
+     <div id="section-center">
+         <section id="section">
+            <a href="#">
+                    <div id="div-card">
+                    <img src="/img/veg.gif" alt="Image not available !" class="img-card">
+                    <div class="img-container">
+                        <h4><b>Pure Veg</b></h4> 
+                        <p>Text about Veg</p>
+                    </div>
+                    
+                </div>
+            </a>
+            <a href="#">
+                <div id="div-card">
+                    <img src="/img/Food.jpg" alt="image not available !" class="img-card" >
+                    <div class="img-container">
+                        <h4><b>Jane Doe</b></h4> 
+                        <p>Text about Veg</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div id="div-card">
+                    <img src="/img/indian.jpg" alt="image not available !" class="img-card" >
+                    <div class="img-container">
+                        <h4><b>Indian Food</b></h4> 
+                        <p>Text about Indian Food</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div id="div-card">
+                    <img src="/img/chicken.jpg" alt="image not available !" class="img-card" >
+                    <div class="img-container">
+                        <h4><b>Chicken</b></h4> 
+                        <p>Text about chicken</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div id="div-card">
+                    <img src="/img/bevrages.jpg" alt="image not available !" class="img-card" >
+                    <div class="img-container">
+                        <h4><b>Bevrages</b></h4> 
+                        <p>Text about Bevrages</p>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div id="div-card">
+                    <img src="/img/food.gif" alt="image not available !" class="img-card" >
+                    <div class="img-container">
+                        <h4><b>Jane Doe</b></h4> 
+                        <p>Text about Veg</p>
+                    </div>
+                </div>
+            </a>
+        </section>
+         <aside id="aside">
+             <form action="#" id="feedback-frm" method="post">
+                 <p>FEEDBACK</p>
+                 <!-- <input type="text" name="name" placeholder="Enter Your Name.."><br><br>
+                 <input type="number" name="num" placeholder="Enter Your Mob.No.."><br><br>
+                 <input type="email" name="email" placeholder="Enter Your E-mail.."><br><br> -->
+                 <textarea name="textarea" id="textarea" cols="30" rows="4" placeholder="Enter Your Suggestions.."></textarea><br><br>
+                 <input type="submit" id="submit"><br><br>
+                 <input type="submit" id="back" value="Back">
+             </form>
+             <button id="feedback-btn">Feedback</button>
+         </aside>
+        
+     </div>
+     <footer id="footer">
+        <div id="aboutus">
+            <p>AboutUs</p>
+            <div id="div-aboutus">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem illum iusto ducimus id aut vel officia vero neque corrupti corporis, odit, totam praesentium unde similique voluptatum sunt nobis natus labore.
+                Rem delectus autem soluta suscipit in perspiciatis beatae blanditiis repellat unde! Esse hic quaerat dolorem. Possimus ducimus laborum, officia eum, officiis nobis sint iste modi, sed aut laboriosam exercitationem aliquam?
+            </div>
+        </div>
+        <div id="contactus">
+            <p>ContactUs</p>
+            <div id="div-contactus">
+                <p>Email- A@B.COM</p>
+                <p>Mob NO-+9187********</p>
+            </div>
+            <p>Follow Me</p>
+            <div id="div-contactus">
+                <a href="#"><img src="/img/insta.png" alt="not available..!" id="social-logo"></a>
+                <a href="#"><img src="/img/linkedin.png" alt="not available .." id="social-logo"></a>
+            </div>
+        </div>
+        <div id="address">
+            <p>Address</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.6305837131013!2d73.73316071472183!3d18.59068618736816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb8b8b760fc7%3A0xa70135afe7c92858!2sWorldline%20Global%20Services%20Pvt%20Ltd%20.!5e0!3m2!1sen!2sin!4v1648364280870!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="map"></iframe>
+            
+        </div>
+    </footer>
+    </div>
+    <script src="/jquery/feedback-form.js"></script>
+</body>
+</html>

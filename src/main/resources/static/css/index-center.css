@@ -1,0 +1,75 @@
+#section-center{
+    height: 600px;
+}
+#section{
+    height: auto;
+    width:100%;
+    float: left;
+    border-radius: 10%;
+    background-color: rgba(135, 221, 233, 0.151);
+}
+#section:hover{
+    border-radius: 0%;
+    background-color: rgba(255, 255, 255, 0.151);
+}
+#aside{
+    height: auto;
+    width: 50%;
+    float: left;
+    margin-left: 5px;
+    
+}
+#feedback-btn{
+    float: right;
+    position: absolute;
+    font-size: 20px;
+    top:100%;
+    left:92%;
+}
+#feedback-frm{
+    text-align: center;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.096);
+}
+#feedback-frm input,#textarea{
+    padding: 5px;
+    width: 80%;
+
+}
+#textarea{
+    height: 200px;
+    border-radius: 40px;
+    padding: 2%;
+}
+#feedback-frm p,input[type=submit]{
+    background-color: rgba(224, 28, 28, 0.685);
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+}
+
+#div-card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    float: left;
+    margin-left: 3%;
+    margin-top: 2%;
+}
+.img-card{
+    height: 200px;
+    width: 200px;
+    float: left;
+    border-radius: 10px 10px 0 0;
+    
+}
+#div-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.img-container{
+    color: white;
+    background-color: rgba(163, 165, 42, 0.295);
+    text-align: center;
+}
+#div-card:hover{
+    background-color: rgba(255, 0, 0, 0.514);
+}

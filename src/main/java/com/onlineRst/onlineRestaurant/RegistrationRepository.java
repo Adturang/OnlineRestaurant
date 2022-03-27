@@ -8,5 +8,6 @@ public interface RegistrationRepository extends CrudRepository<Registration, Str
     @Query("SELECT u FROM Registration u WHERE u.userName = :userName")
     public Registration getRegistrationByUsername(String userName);
     //List<Registration> findAll();
+    
 }
 
