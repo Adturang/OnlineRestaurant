@@ -30,5 +30,5 @@ public class Item {
 	int calculateTotalPrice() {
 		return this.getPrice()*this.getQty();
 	}
-	int totalPrice=calculateTotalPrice();
+	int totalPrice;
 }

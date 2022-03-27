@@ -53,7 +53,7 @@ public class RestaurantController {
 			return "ui/adminBhau";
 		}else {
 			session.setAttribute("sesName",username);
-		return "ui/Index";
+		return "ui/ind";
 		}
 	}
 	
@@ -70,15 +70,16 @@ public class RestaurantController {
 		return "redirect:/showLoginForm";
 	}
 	
-	@PostMapping("/destroy")
+	@RequestMapping("/destroy")
 	public String destroySession(HttpSession request) {
+		System.out.println("inside destroy");
 		request.invalidate();
-		return "redirect:/home";
+		return "redirect:/";
 	}
-	@PostMapping("/veg")
+	@RequestMapping("/veg")
 	public String veg() {
 		recentMapping="veg";
-		return "ui/veg";
+		return "ui/Veg";
 	}
 	@PostMapping("/nonVeg")
 	public String nonVeg() {
@@ -90,11 +91,14 @@ public class RestaurantController {
 		recentMapping="drinks";
 		return "ui/drinks";
 	}
-	@PostMapping("/addToCart")
+	@RequestMapping("/addToCart")
 	public String addToCart(Item item,HttpSession session) {
 		item.setUserName(session.getAttribute("sesName").toString());
 		item.setType(recentMapping);
+		item.setTotalPrice(item.calculateTotalPrice());
 		itemList.add(item);
+		System.out.println(item);
+		System.out.println(itemList.size());
 		return "redirect:/"+recentMapping;
 	}
 	

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -29,10 +29,8 @@
                 
             </div>
             <div id="header-rigth-user">
-            	<div th:text="${session.sesName}"></div>
-                <a href="#">
-                    <img src="/img/user.png" alt="user not available!" id="user">
-                </a>
+            	<div th:text="${'welcome@ '+session.sesName}" style="color:white;"></div>
+                <form action="/destroy"><button>LogOut</button></form>
                 <a href="#">
                     <img src="/img/cart.png" alt="image not available!" id="cart">
                 </a>
@@ -53,7 +51,7 @@
      </nav>
      <div id="section-center">
          <section id="section">
-            <a href="#">
+            <a href="/veg">
                     <div id="div-card">
                     <img src="/img/veg.gif" alt="Image not available !" class="img-card">
                     <div class="img-container">
