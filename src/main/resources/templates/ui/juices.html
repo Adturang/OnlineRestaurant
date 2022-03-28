@@ -1,0 +1,134 @@
+<html>
+<head xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/css/index-header.css">
+<link rel="stylesheet" href="/css/index-nav.css">
+<link rel="stylesheet" href="/css/menu.css">
+<title>Juice Page</title>
+</head>
+<body>
+	<div id="outer-div">
+		<header>
+        <div id="header">
+            <div id="header-left-logo">
+                
+                    <img src="/img/res.png" alt="logo not available !" height="50px" width="50px">
+                
+            </div>
+            <div id="header-center">
+                <center>
+                    <span id="header-title">Welcome To Baba Da Dhaba</span>
+                </center>
+                
+            </div>
+            <div id="header-rigth-user">
+            	<div th:text="${'welcome@ '+session.sesName}" style="color:white;" id="ses"></div>
+                <a href="/cart"><!-- GoToCart to be added -->
+                    <img src="/img/cart.png" alt="image not available!" id="cart">
+                </a>
+                <form action="/destroy" id="log"><button>LogOut</button></form>
+            </div>
+        </div>
+      </header>
+      <nav id="nav">
+        <div id="nav-left"></div>
+        <div id="nav-center">
+            <ul id="nav-menu-list">
+                <li><a href="/i" id="li-a">Home</a></li>
+                <li><a href="/veg" id="li-a">Veg</a></li>
+                <li><a href="/nonVeg" id="li-a">Non-Veg</a></li>
+                <li><a href="/italian" id="li-a">Italian</a></li>
+                <li><a href="/bakery" id="li-a">Bakery</a></li>
+                <li><a href="/continental" id="li-a">Continental</a></li>
+            </ul>
+        </div>
+       
+        <div id="nav-right"></div>
+     </nav>
+     <span th:text="${MSG}" style="color:white;" id="existAlert" class="alert success-alert"></span>
+	</div>
+	<div class="container">
+		<div class="card">
+			<img src="/img/Juices/Apple_juice.webp">
+			<form action="/addToCart">
+				<div class="title">
+					Apple Juice<input type="hidden" name="name" value="Apple Juice">
+				</div>
+				<h4>
+					₹275<input type="hidden" id="custId" name="price" value="275">
+				</h4>
+				<h4>
+					Qty:<input class="quantity" id="id_form-0-quantity" min="0"
+						name="qty" value="1" type="number">
+				</h4>
+				<button type="submit">Add to Cart</button>
+			</form>
+		</div>
+		<div class="card">
+			<img src="/img/Juices/berry juice.jpg">
+			<form action="/addToCart">
+				<div class="title">
+					Berry Juice<input type="hidden" name="name" value="Berry Juice">
+				</div>
+				<h4>
+					₹200<input type="hidden" id="custId" name="price" value="200">
+				</h4>
+				<h4>
+					Qty:<input class="quantity" id="id_form-0-quantity" min="0"
+						name="qty" value="1" type="number">
+				</h4>
+				<button type="submit">Add to Cart</button>
+			</form>
+		</div>
+		<div class="card">
+			<img src="/img/Juices/Lemon_juice.webp">
+			<form action="/addToCart">
+				<div class="title">
+					Lemon Juice<input type="hidden" name="name" value="Lemon Juice">
+				</div>
+				<h4>
+					₹175<input type="hidden" id="custId" name="price" value="175">
+				</h4>
+				<h4>
+					Qty:<input class="quantity" id="id_form-0-quantity" min="0"
+						name="qty" value="1" type="number">
+				</h4>
+				<button type="submit">Add to Cart</button>
+			</form>
+		</div>
+		<div class="card">
+			<img src="/img/Juices/Musk_melon.webp">
+			<form action="/addToCart">
+				<div class="title">
+					Musk Lemon<input type="hidden" name="name" value="Musk Lemon">
+				</div>
+				<h4>
+					₹125<input type="hidden" id="custId" name="price" value="125">
+				</h4>
+				<h4>
+					Qty:<input class="quantity" id="id_form-0-quantity" min="0"
+						name="qty" value="1" type="number">
+				</h4>
+				<button type="submit">Add to Cart</button>
+			</form>
+		</div>
+		<div class="card">
+			<img src="/img/Juices/Pineapple.webp">
+			<form action="/addToCart">
+				<div class="title">
+					Pineaaple Juice<input type="hidden" name="name"
+						value="Pineaaple Juice">
+				</div>
+				<h4>
+					₹125<input type="hidden" id="custId" name="price" value="125">
+				</h4>
+				<h4>
+					Qty:<input class="quantity" id="id_form-0-quantity" min="0"
+						name="qty" value="1" type="number">
+				</h4>
+				<button type="submit">Add to Cart</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

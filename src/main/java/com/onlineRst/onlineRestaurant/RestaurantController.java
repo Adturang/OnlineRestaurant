@@ -81,36 +81,81 @@ public class RestaurantController {
 		recentMapping="veg";
 		return "ui/Veg";
 	}
-	@PostMapping("/nonVeg")
+	@RequestMapping("/nonVeg")
 	public String nonVeg() {
 		recentMapping="nonVeg";
-		return "ui/nonVeg";
+		return "ui/non_veg";
 	}
-	@PostMapping("/drinks")
-	public String drinks() {
-		recentMapping="drinks";
-		return "ui/drinks";
+	@RequestMapping("/juices")
+	public String drinks(HttpSession session, Model model) {
+		if(session.getAttribute("msg")!=null) {
+			model.addAttribute("MSG", session.getAttribute("msg"));
+			session.removeAttribute("msg");
+		}
+		recentMapping="juices";
+		return "ui/juices";
+	}
+	@RequestMapping("/bakery")
+	public String bakery() {
+		recentMapping="bakery";
+		return "ui/bakery";
+	}
+	@RequestMapping("/continental")
+	public String continental() {
+		recentMapping="continental";
+		return "ui/continental";
+	}
+	@RequestMapping("/italian")
+	public String italian() {
+		recentMapping="italian";
+		return "ui/italian";
+	}
+	@RequestMapping("/cart")
+	public String cart(Model model) {
+		long totalCost=0;
+		if (itemList.isEmpty()) {
+			model.addAttribute("toCost",totalCost);
+		}else {
+			for (Item item : itemList) {
+				totalCost+=item.getTotalPrice();
+			}
+			model.addAttribute("toCost",totalCost);
+		}
+		return "ui/cart";
 	}
 	@RequestMapping("/addToCart")
-	public String addToCart(Item item,HttpSession session) {
-		item.setUserName(session.getAttribute("sesName").toString());
-		item.setType(recentMapping);
-		item.setTotalPrice(item.calculateTotalPrice());
-		itemList.add(item);
-		System.out.println(item);
-		System.out.println(itemList.size());
+	public String addToCart(Item item,HttpSession session,Model model) {
+		if (itemList.isEmpty()||!(new DataFinder().isPresent(itemList, item.getName()))) {
+			item.setUser(session.getAttribute("sesName").toString());
+			item.setType(recentMapping);
+			item.setTotalPrice(item.calculateTotalPrice());
+			itemList.add(item);
+			System.out.println(item);
+			System.out.println(itemList.size());
+		}else {
+			session.setAttribute("msg",item.getName()+" Already Added To Your Cart");
+		}
 		return "redirect:/"+recentMapping;
 	}
 	
-	@PostMapping("/ordered")
-	public String ordered(List<Item> items) {
-		irepo.saveAll(items);
-		return "redirect:/home";
+	@RequestMapping("/ordered")
+	public String ordered() {
+		//irepo.saveAll(itemList);
+		return "redirect:/"+recentMapping;
 	}
 	@RequestMapping("/")
 	public String index() {
 		return "ui/Index";
 	}
+	@RequestMapping("/i")
+	public String calluser() {
+		return "ui/ind";
+	}
+	@PostMapping("/in")
+	public String ind() {
+		return "ui/ind";
+	}
+	
 	
 	  
 }

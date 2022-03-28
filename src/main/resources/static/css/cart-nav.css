@@ -1,23 +1,23 @@
 #nav{
     border: 1px solid;
-    height: 200px;
+    height: 150px;
     width: 100%;
     
 }
 #nav-left{
-    width:24%;
+    width:20%;
     float :left;
     border: 1px dotted;
 }
 #nav-center{
-    width: 50%;
+    width: 60%;
     float: left;
     border: 1px solid;
     padding-left: 5px;
     
 }
 #nav-right{
-    width: 24%;
+    width: 14%;
     float: left;
     border: 1px solid;
 }
@@ -39,7 +39,7 @@ li{
 #li-a:hover{
     color: black;
     font-size: 20px;
-    background-color:grey;
+    background-color: red;
     font-weight: bold;
     border-radius: 30%;
 }

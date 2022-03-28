@@ -29,9 +29,9 @@
                 
             </div>
             <div id="header-rigth-user">
-            	<div th:text="${'welcome@ '+session.sesName}" style="color:white;"></div>
-                <form action="/destroy"><button>LogOut</button></form>
-                <a href="#">
+            	<div th:text="${'welcome@ '+session.sesName}" style="color:white;" id="ses"></div>
+                <form action="/destroy" id="log"><button>LogOut</button></form>
+                <a href="/cart">
                     <img src="/img/cart.png" alt="image not available!" id="cart">
                 </a>
             </div>
@@ -56,39 +56,39 @@
                     <img src="/img/veg.gif" alt="Image not available !" class="img-card">
                     <div class="img-container">
                         <h4><b>Pure Veg</b></h4> 
-                        <p>Text about Veg</p>
+                        <p>Best Veg Food</p>
                     </div>
                     
                 </div>
             </a>
-            <a href="#">
+            <a href="/continental">
                 <div id="div-card">
                     <img src="/img/Food.jpg" alt="image not available !" class="img-card" >
                     <div class="img-container">
-                        <h4><b>Jane Doe</b></h4> 
+                        <h4><b>Continental</b></h4> 
                         <p>Text about Veg</p>
                     </div>
                 </div>
             </a>
-            <a href="#">
+            <a href="/italian">
                 <div id="div-card">
                     <img src="/img/indian.jpg" alt="image not available !" class="img-card" >
                     <div class="img-container">
-                        <h4><b>Indian Food</b></h4> 
+                        <h4><b>Italian Food</b></h4> 
                         <p>Text about Indian Food</p>
                     </div>
                 </div>
             </a>
-            <a href="#">
+            <a href="/nonVeg">
                 <div id="div-card">
                     <img src="/img/chicken.jpg" alt="image not available !" class="img-card" >
                     <div class="img-container">
-                        <h4><b>Chicken</b></h4> 
-                        <p>Text about chicken</p>
+                        <h4><b>Non-Veg</b></h4> 
+                        <p>Text about Non-Veg</p>
                     </div>
                 </div>
             </a>
-            <a href="#">
+            <a href="juices">
                 <div id="div-card">
                     <img src="/img/bevrages.jpg" alt="image not available !" class="img-card" >
                     <div class="img-container">
@@ -97,12 +97,12 @@
                     </div>
                 </div>
             </a>
-            <a href="#">
+            <a href="/bakery">
                 <div id="div-card">
                     <img src="/img/food.gif" alt="image not available !" class="img-card" >
                     <div class="img-container">
-                        <h4><b>Jane Doe</b></h4> 
-                        <p>Text about Veg</p>
+                        <h4><b>Bakery</b></h4> 
+                        <p>Text about Bakery</p>
                     </div>
                 </div>
             </a>

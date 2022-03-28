@@ -1,10 +1,22 @@
 package com.onlineRst.onlineRestaurant;
 
-import lombok.Getter;
-import lombok.Setter;
+import javax.persistence.Entity;
 
-@Setter
+import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Component
 public class UserD {
-	public static String username;
+  String username;
+  int id;
 }

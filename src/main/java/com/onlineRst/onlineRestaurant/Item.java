@@ -2,6 +2,7 @@ package com.onlineRst.onlineRestaurant;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -17,10 +18,9 @@ import lombok.NoArgsConstructor;
 @Entity(name = "Items")
 public class Item {
 	
-	@OneToOne(cascade = CascadeType.ALL,targetEntity = Registration.class)
-	@JoinColumn(name = "user", referencedColumnName = "userName")
-	String userName;
+	String user;
 	@Id
+	@GeneratedValue
 	int id;
 	String name;
 	int price;

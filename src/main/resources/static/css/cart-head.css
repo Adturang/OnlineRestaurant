@@ -1,0 +1,48 @@
+body{
+    background-image: url("/img/bg1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: cover;  
+    background-size: cover;
+    height: 50px;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+#header{
+    height:50px;
+    width:100%;
+    background-color: rgba(255, 255, 255, 0.164);
+}
+#head-left{
+    height: 50px;
+    width:49%;
+    float: left;
+}
+#price,#value{
+    background-color: rgba(0, 0, 0, 0.411) ;
+    color: white;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    padding: 12px;
+    margin-top: 0px;
+    border: 1px solid white;
+    margin-left: 10px;
+}
+#ul-btn li{
+    display: inline;
+    background-color:rgba(0, 0, 0, 0.603);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid white;
+}
+#ul-btn a{
+    text-decoration: none;
+}
+#ul-btn li:hover{
+    background-color: rgba(255, 0, 0, 0.603);
+    font-size: 20px;
+}
