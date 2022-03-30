@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -121,6 +122,7 @@ public class RestaurantController {
 			}
 			model.addAttribute("toCost",totalCost);
 		}
+		model.addAttribute("ilist",itemList);
 		return "ui/cart";
 	}
 	@RequestMapping("/addToCart")
@@ -136,6 +138,19 @@ public class RestaurantController {
 			session.setAttribute("msg",item.getName()+" Already Added To Your Cart");
 		}
 		return "redirect:/"+recentMapping;
+	}
+	
+	@RequestMapping("/edit")
+	public String edit(@ModelAttribute("SpringWeb")Item item) {
+		System.out.println(item);
+		itemList.remove(item);
+		return "redirect:/"+item.type;
+	}
+	@RequestMapping("/cancel")
+	public String cancel(@ModelAttribute("SpringWeb")Item item) {
+		System.out.println(item);
+		itemList.remove(item);
+		return "redirect:/"+"cart";
 	}
 	
 	@RequestMapping("/ordered")

@@ -44,8 +44,8 @@
     border-radius: 5px;
 }
 #place-order:hover, #cancel-order:hover{
-    font-size: 25px;
-    background-color: red;
+    font-size: 15px;
+    background-color:grey;
     padding: 10px;
     border-radius: 10px;
 }
