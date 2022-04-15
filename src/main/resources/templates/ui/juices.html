@@ -45,7 +45,18 @@
        
         <div id="nav-right"></div>
      </nav>
-     <span th:text="${MSG}" style="color:white;" id="existAlert" class="alert success-alert"></span>
+     <script type="text/javascript" th:inline="javascript">
+     
+     	function fk(){
+		   				alert("MMMMM");	
+	     	}
+     	 	
+     </script>
+		<!-- 	<div th:if='${#strings.contains(MSG,"juices")}'> </div> -->
+     	 	<span th:text="${MSG}" style="color:white;" id="existAlert" class="alert success-alert" (on)load="fk()">
+     			  
+     		</span>
+     		
 	</div>
 	<div class="container">
 		<div class="card">

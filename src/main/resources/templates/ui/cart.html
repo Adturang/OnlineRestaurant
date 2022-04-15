@@ -40,26 +40,7 @@
         </div>
         <div id="nav-right"></div>
      </nav>
-  	      <div>
-     <table style="color:white;">
-     	<tr th:each="item: ${ilist}">
-     		<td ><img th:src="@{${'/img/allimg/' + item.name +'.jpg'}}" width="120"></td>
-     		<td th:text="${item.name}"> </td>
-     		<td th:text="${item.price}"> </td>
-     		<td th:text="${item.qty}"> </td>
-     		<td th:text="${item.totalPrice}"> </td>
-     		<td><form action="/edit" th:object="${item}"><input type="hidden" name="name" th:value="${item.name}"><input type="hidden" name="type" th:value="${item.type}"> 
-     			<input type="hidden" name="price" th:value="${item.price}"><input type="hidden" name="qty" th:value="${item.qty}"><input type="hidden" name="user" th:value="${item.user}"><input type="hidden" name="totalPrice" th:value="${item.totalPrice}">
-     		<button id="place-order">Edit</button></form>
-     		</td>
-     		<td><form action="/cancel" th:object="${item}"><input type="hidden" name="name" th:value="${item.name}"><input type="hidden" name="type" th:value="${item.type}"> 
-     			<input type="hidden" name="price" th:value="${item.price}"><input type="hidden" name="qty" th:value="${item.qty}"><input type="hidden" name="user" th:value="${item.user}"><input type="hidden" name="totalPrice" th:value="${item.totalPrice}">
-     		<button id="place-order">Cancel</button></form>
-     		</td>
-     	</tr>
-     </table>
-     <span th:text="${toCost}" style="color:white;"></span>
-     </div>
+  	   
      
     <div id="section-body">
         <div id="section-left"></div>
@@ -71,6 +52,38 @@
                 <button id="place-order">Place Order</button>
                 <button id="cancel-order">Cancel Order</button>
             </form>
+               <div>
+     <table style="color:white;" id="cart-items">
+     <tr th:if="${! ilist.empty}">
+     <th class="cart-title">Item</th>
+     <th class="cart-title">Item-Name</th>
+     <th class="cart-title">Price</th>
+     <th class="cart-title">Qty</th>
+     <th class="cart-title">Total-Price</th>
+     <th class="cart-title" colspan="2">Update</th>
+     </tr>
+     	<tr th:each="item: ${ilist}">
+     		
+     		<td><img th:src="@{${'/img/allimg/' + item.name +'.jpg'}}" width="120"></td>
+     		<td th:text="${item.name}" class="cart-data"> </td>
+     		<td th:text="${item.price}" class="cart-data"> </td>
+     		<td th:text="${item.qty}" class="cart-data"> </td>
+     		<td th:text="${item.totalPrice}" class="cart-data"> </td>
+     		<td><form action="/edit" th:object="${item}"><input type="hidden" name="name" th:value="${item.name}"><input type="hidden" name="type" th:value="${item.type}"> 
+     			<input type="hidden" name="price" th:value="${item.price}"><input type="hidden" name="qty" th:value="${item.qty}"><input type="hidden" name="user" th:value="${item.user}"><input type="hidden" name="totalPrice" th:value="${item.totalPrice}">
+     		<button id="place-order">Edit</button></form>
+     		</td>
+     		<td><form action="/cancel" th:object="${item}"><input type="hidden" name="name" th:value="${item.name}"><input type="hidden" name="type" th:value="${item.type}"> 
+     			<input type="hidden" name="price" th:value="${item.price}"><input type="hidden" name="qty" th:value="${item.qty}"><input type="hidden" name="user" th:value="${item.user}"><input type="hidden" name="totalPrice" th:value="${item.totalPrice}">
+     		<button id="place-order">Cancel</button></form>
+     		</td>
+     	</tr>
+     </table>
+     <div class="total-price">
+     <span>Total-Price:</span>
+     <span th:text="${toCost}" ></span>
+     </div>
+     </div>
         </div>
     </div>
     <footer id="footer">

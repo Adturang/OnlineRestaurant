@@ -90,7 +90,8 @@ public class RestaurantController {
 	@RequestMapping("/juices")
 	public String drinks(HttpSession session, Model model) {
 		if(session.getAttribute("msg")!=null) {
-			model.addAttribute("MSG", session.getAttribute("msg"));
+			String ss=(String) session.getAttribute("msg");
+			model.addAttribute("MSG", ss);
 			session.removeAttribute("msg");
 		}
 		recentMapping="juices";
@@ -129,13 +130,13 @@ public class RestaurantController {
 	public String addToCart(Item item,HttpSession session,Model model) {
 		if (itemList.isEmpty()||!(new DataFinder().isPresent(itemList, item.getName()))) {
 			item.setUser(session.getAttribute("sesName").toString());
-			item.setType(recentMapping);
+			item.setType(recentMapping);// hatao in add to own
 			item.setTotalPrice(item.calculateTotalPrice());
 			itemList.add(item);
 			System.out.println(item);
 			System.out.println(itemList.size());
 		}else {
-			session.setAttribute("msg",item.getName()+" Already Added To Your Cart");
+			session.setAttribute("msg",recentMapping+" "+item.getName()+" Already Added To Your Cart From"+recentMapping);
 		}
 		return "redirect:/"+recentMapping;
 	}
