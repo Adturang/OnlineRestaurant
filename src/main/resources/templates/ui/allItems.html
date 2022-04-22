@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" style="width:300px">
+    <tr>
+    <td>Image</td>
+        <td> Name</td>
+        <td> Price </td>
+        <td> qty </td>
+            <td> User </td>
+            <td>Date</td>
+            <td>Total price</td>
+            <td>Type</td>
+    </tr>
+ <tr th:each="i : ${itemList}">
+<td ><img th:src="@{${'/img/allimg/' + i.name +'.jpg'}}" width="120"></td>
+            <td><span th:text="${i.name}">  </span></td>
+            
+            <td><span th:text="${i.price}">  </span></td>
+               <td><span th:text="${i.qty}">  </span></td>
+                    <td><span th:text="${i.user}">  </span></td>
+                     <td><span th:text="${i.date}">  </span></td>
+                       <td><span th:text="${i.totalPrice}">  </span></td> 
+                       <td><span th:text="${i.type}">  </span></td> 
+        </tr>
+        </table>
+</body>
+</html>
+
+

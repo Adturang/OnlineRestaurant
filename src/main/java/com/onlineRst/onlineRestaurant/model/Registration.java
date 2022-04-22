@@ -1,4 +1,4 @@
-package com.onlineRst.onlineRestaurant;
+package com.onlineRst.onlineRestaurant.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

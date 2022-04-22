@@ -8,14 +8,13 @@ $(document).ready(function(){
       $("#section").css("display","none");
       
     });
-    $("#submit").click(function(event){
-      event.preventDefault();
-      location.reload();
-    });
+//    $("#submit").click(function(event){
+//      event.preventDefault();
+//      location.reload();
+//    });
     $("#back").one('click', function (event) {  
       event.preventDefault();
       location.reload();
 
     })
   });
-  

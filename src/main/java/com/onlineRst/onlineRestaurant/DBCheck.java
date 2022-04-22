@@ -1,5 +1,8 @@
 package com.onlineRst.onlineRestaurant;
 
+import com.onlineRst.onlineRestaurant.dao.RegistrationRepository;
+import com.onlineRst.onlineRestaurant.model.Registration;
+
 public class DBCheck {
 	
 	

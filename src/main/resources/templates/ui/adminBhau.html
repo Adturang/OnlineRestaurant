@@ -3,8 +3,147 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script src="/js/in.js"></script>
 </head>
 <body>
-<h1>Hi Admin</h1>
+<h1 style="text-align: center;color: red"><div th:text="${'welcome@ '+session.sesName}"></div></h1>
+
+  		<form action="/showAlluser">
+
+		<input type="submit" name="sub" value="showAlluserBySortName">
+	</form>
+	<br>
+	<form action="/showAllitems">
+	<select name="type">
+				<option value="nonVeg">Non-Veg</option>
+				<option value="veg">Veg</option>
+				<option value="continental">Continnetal</option>
+				<option value="italian">Italian</option>
+				<option value="bakery">Bakery</option>
+				<option value="juices">Juices</option>
+				
+			<input type="submit" name="sub" value="showOrderedUsingType">
+	</form>
+
+	<br>
+	<hr>
+
+<!-- 	<form action="/addnewItemToList">
+		ItemType ::<input type="text" name="type"><br> ItemName
+		::<input type="text" name="name"><br> ItemPrice ::<input
+			type="number" name="price"><br> ItemID ::<input
+			type="number" name="id"><br> <input type="submit"
+			name="sub" value="AddNewItem">
+	</form> -->
+	<hr>
+	<form action="showAllitemsWehave">
+
+		<input type="submit" value="showAllOrdereditems" name="itemColl">
+	</form>
+<hr>
+<form action="/top3ItemSelled">
+		<input type="submit" value="top3ITemSelled">
+		</form>
+	<hr>
+	<form action="/showWithInSpecifieddate">
+		<label for="start">Start date:</label> <input type="date" name="dat"
+			value="2018-07-22" min="2018-01-01" max="2050-12-31"> <input
+			type="submit" value="WithInSpecifieddate">
+	</form>
+	<hr>
+	<hr>
+	<div>
+		<form action="/showWithInSpecifiedRangeOfDate">
+			<label for="start">Start date:</label> 
+			<input type="date"
+				name="initialDate" value="2022-04-15" min="2022-01-01" max="2050-12-31">
+				
+			<label for="end">End date:</label> 
+			<input type="date" name="finalDate"
+				value="2022-04-15" min="2022-01-01" max="2050-12-31"> <input
+				type="submit" value="WithInSpecifiedRange">
+		</form>
+		</hr>
+
+	
+
+	
+
+
+		<hr>
+
+		<form action="/addItemasPerCategory" method="post"
+			enctype="multipart/form-data">
+			<select name="type">
+				<option value="Non-Veg">Non-Veg</option>
+				<option value="Veg">Veg</option>
+				<option value="continental">continental</option>
+
+			</select> ItemName ::<input type="text" name="name"><br>
+			ItemPrice ::<input type="number" name="price"><br>
+			ItemID ::<input type="number" name="id"><br> ItemType ::<input
+				type="file" name="file" /> <br>
+			<input type="submit"
+				value="AddItemInSelectedType">
+
+			<hr>
+			<hr>
+		</form>
+
+		<form action="/showItemByCategory">
+			<select name="choice">
+				<option value="Non-Veg">Non-Veg</option>
+				<option value="Veg">Veg</option>
+				<option value="continental">continental</option>
+
+			</select> <input type="submit" value="ShowItemsInSelectedCategory">
+		</form>
+
+		<hr>
+		<form action="/deleteItemByCategory" method="post">
+		<select name="choice">
+				<option value="Non-Veg">Non-Veg</option>
+				<option value="Veg">Veg</option>
+				<option value="continental">continental</option>
+				</select>
+				
+				<!-- 	<select name="selectedItem">
+					 <div th:each="i : ${data}">
+				<option th:value="${i.name}" > <span th:text="${i.name}"></span></option>
+				</div>
+				</select> -->
+				
+			
+		<input type="submit" value="DeleteItemByCategory">
+		</form>
+		<hr>
+		<hr>
+		
+		<hr>
+		<hr>
+	<!-- 		<form action="deleteItem">
+			<input type="number" name="id"
+				placeholder="enetr id to delete the product"> <input
+				type="submit" value="DeleteItemById"></input>
+		</form> -->
+		
+		
+<!-- 		<form action="deleteAnyItemById">
+		
+			<input type="number" name="id"
+				placeholder="enetr id to delete the product"> <input
+				type="submit" value="DeleteItemById"></input>
+		</form>  -->
+		<form action="/demo">
+		<input type="hidden" value="NotComplete" name="status"/>
+		<input type="submit" value="demo">
+		
+		</form>
+		<form action="populatingList">
+		<input type="submit" value="populate">
+		</form>
+		
 </body>
 </html>
+
+

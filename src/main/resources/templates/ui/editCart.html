@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/cart-section.css">
+
+</head>
+<body>
+	
+	 <table id="cart-items">
+     <tr>
+     <th class="cart-title">Item</th>
+     <th class="cart-title">Item-Name</th>
+     <th class="cart-title">Price</th>
+     <th class="cart-title">.qty</th>
+     <th class="cart-title">oDate</th>
+     <th class="cart-title">Total-Price</th>
+     </tr>
+	<tr>
+     		
+     		<td><img th:src="@{${'/img/allimg/' + item.name +'.jpg'}}" width="120"></td>
+     		<td th:text="${item.name}" class="cart-data"> </td>
+     		<td th:text="${item.price}" class="cart-data"> </td>
+     		<td th:text="${item.qty}" class="cart-data"> </td>
+			<td th:text="${item.oDate}" class="cart-data"> </td>
+     		<td th:text="${item.totalPrice}" class="cart-data"> </td>
+     		
+     </tr>
+     	
+     </table>
+    <form action="/editCart" th:object="${item}">
+    <h2>Edit Cart</h2>
+		     	<input type="hidden" name="name" th:value="${item.name}">
+		     	<input type="hidden" name="type" th:value="${item.type}"> 
+     			<input type="hidden" name="price" th:value="${item.price}">
+     			<input type="number" name="qty" min="1" th:value="${item.qty}">
+     			<input type="hidden" name="user" th:value="${item.user}">
+     			<input type="hidden" name="oDate" th:value="${item.oDate}">
+     			<input type="hidden" name="totalPrice" th:value="${item.totalPrice}">
+     			<br></br>
+     	<button>Update</button>
+     </form>
+     
+</body>
+</html>

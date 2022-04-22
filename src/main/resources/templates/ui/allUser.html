@@ -1,0 +1,24 @@
+
+
+
+<table border="1" style="width:300px">
+    <tr>
+        <td> Name</td>
+        <td> Email </td>
+        <td> ContactNo </td>
+    </tr>
+    <tr th:each="user : ${session.alluser}" >
+        <td
+            th:text="${user.userName}">
+        </td>
+          <td
+            th:text="${user.email}">
+        </td>
+          <td
+            th:text="${user.number}">
+        </td>
+    </tr>
+</table>
+<h1> hii..........</h1>
+
+

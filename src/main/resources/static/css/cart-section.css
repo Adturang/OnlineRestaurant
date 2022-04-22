@@ -20,6 +20,7 @@
 	padding:10px;
 	border-radius: 8%;
 }
+
 .cart-data{
 	color:white;
 	padding:10px;
@@ -50,6 +51,21 @@
     border-radius: 10px;
     margin-top: 10%;
 }
+#own-recipe{
+	width:auto;
+	padding:10px;
+	font-size:15px;
+	margin-left:60%;
+}
+#own-qty{
+	padding:5px;
+	width:50px;
+}
+#own-qty-span{
+	margin-left:60%;
+	color: white;
+	font-size: 20px;
+}
 #recipe-frm h1{
     background-color: black;
     color: white;
@@ -63,7 +79,14 @@
     padding-left: 20px;
     border-radius: 10px;
 }
-#place-order, #cancel-order{
+#recipe-name{
+	padding:5px;
+    width: 80%;
+    padding-left: 20px;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
+#add-order, #cancel-order{
     padding: 8px;
     background-color: black;
     font-size: 15px;
@@ -71,9 +94,10 @@
     cursor: pointer;
     border-radius: 5px;
 }
-#place-order:hover, #cancel-order:hover{
+#add-order:hover, #cancel-order:hover{
     font-size: 15px;
     background-color:grey;
     padding: 10px;
     border-radius: 10px;
 }
+

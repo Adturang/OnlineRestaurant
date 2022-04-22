@@ -1,7 +1,5 @@
 package com.onlineRst.onlineRestaurant;
 
-import javax.persistence.Entity;
-
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;

@@ -1,0 +1,38 @@
+#findByDate-div{
+	background-color:rgba(0,0,0,.7);
+	height: auto;
+	width:30%;
+	text-align: center;
+	margin:10% 0 0 30%;
+	border-radius: 10px;
+}
+#findByDate-frm h2{
+	background-color: rgba(255,255,255, 0.3);
+	border-radius: 10px;
+}
+#btn{
+	width:50%;
+	padding: 10px;
+	border-radius: 10px;
+	background-color:red;
+	color:white;
+	font-size: 20px;
+	cursor: pointer;
+}
+#date{
+	width:50%;
+	padding: 10px;
+	border-radius: 10px;
+}
+#back{
+	width:50%;
+	padding: 10px;
+	border-radius: 10px;
+	background-color:rgba(255,0,0,1);
+	font-size: 20px;
+	cursor: pointer;
+}
+#back a{
+	text-decoration: none;
+	color:white;
+}

@@ -1,0 +1,17 @@
+<html>
+<body>
+<h1>Deleted</h1>
+<form action="/delete" method="post">
+	<select name="selectedItem">
+					 <div th:each="i : ${vegList}">
+				<option th:value="${i.name}" > <span th:text="${i.name}"></span></option>
+				</div>
+				</select>
+				 <div th:each="i : ${vegList}">
+				 <input type="hidden" th:value="${i.type}" name="fod"></div>
+				<input type ="submit" value="HitMe">
+		</form>
+		<hr>
+</body>
+
+</html>

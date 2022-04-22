@@ -1,11 +1,8 @@
-package com.onlineRst.onlineRestaurant;
+package com.onlineRst.onlineRestaurant.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -15,20 +12,23 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Component
-@Entity(name = "Items")
-public class Item {
-	
-	String user;
+@Entity
+public class OwnRecipe {
 	@Id
 	@GeneratedValue
 	int id;
+	String uName;
 	String name;
+	String recDesc;
+	String type;
+	String date;
 	int price;
 	int qty;
-	String type;
-	
-	int calculateTotalPrice() {
+	int time;
+	public String status;
+	public int calculateTotalPrice() {
 		return this.getPrice()*this.getQty();
 	}
 	int totalPrice;
+	
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td> Image</td>
+        <td> Price </td>
+        <td> Name </td>
+            <td> Id </td>
+            <td>TYPE</td>
+            <td>Delete</td>
+    </tr>
+				
+			
+					<tr th:each="i : ${list}">
+						<td scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{i.image}}" style="width: 100px;height: 100px;"></td>
+						  <td><span th:text="${i.price}"> 
+               <td><span th:text="${i.name}"> 
+                    <td><span th:text="${i.id}"> 
+                    <td> <span th:text="${i.type}"></span>
+                    <td><span>
+                    <form action="/deleteByName">
+                    <input type="hidden"   th:value="${i.id}"  name="id">
+                    <input type="hidden"   th:value="${i.type}"  name="type">
+                     <input type="hidden"   th:value="${i.name}"  name="name">
+                    <input type="submit" value="DeleteMe">
+                    </form></span>
+                    </tr>
+                    </table>
+                    
+                    
+	</body>
+	</html>

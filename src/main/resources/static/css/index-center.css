@@ -26,6 +26,12 @@
     top:100%;
     left:88%;
 }
+#rateNReview,#rateNReview a{
+	text-decoration:none;
+	width:80%;
+	color:white;
+	font-size: 20px;
+}
 #feedback-frm{
     text-align: center;
     display: none;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/cart-section.css">
+<link rel="stylesheet" href="/css/rateNreview.css">
+<script src="/jquery/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	</div>
+	<table id="cart-items" style="margin-left: 25%;">
+		<tr >
+			<th class="cart-title">Item</th>
+			<th class="cart-title">Item-Name</th>
+			<th class="cart-title">Price</th>
+			<th class="cart-title">Order.Date</th>
+			<th class="cart-title">Rating</th>
+			<th class="cart-title">Review</th>
+			<th class="cart-title">Action</th>
+		</tr>
+		<tr>
+			<tr th:each="item: ${itemList}">
+     		<td><img th:src="@{${'/img/allimg/' + item.name +'.jpg'}}"
+				width="120"></td>
+     		<td th:text="${item.name}" class="cart-data"> </td>
+     		<td th:text="${item.price}" class="cart-data"> </td>
+     		<td th:text="${item.date}" class="cart-data"> </td>
+     		
+     		<form action="/rateNreview">
+     		<td class="cart-data">
+     			<input type="number" min="0" max="5" name="rating" value="0">
+     		 </td>
+     		<td class="cart-data" >
+     			<input type="text" name="review">
+     			
+     		</td>
+     		<input type="hidden" name="name" th:value="${item.name}">
+     		<input type="hidden" name="date" th:value="${item.date}">
+     		<input type="hidden" name="price" th:value="${item.price}">
+     		<td><button id="rateNreview-btn" onclick="hideButton()" >Add</button></td>
+		</form>
+     		
+     </tr>
+     	
+     </table>
+	
+	<script type="text/javascript" src="/jquery/rateNreview.js"></script>
+	</body>
+</html>
