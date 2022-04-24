@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1" style="width: 300px">
+		<tr>
+			<td>Image</td>
+			<td>ID</td>
+			<td>Name</td>
+			<td>Price</td>
+			<td>qty</td>
+			<td>User</td>
+			<td>Date</td>
+			<td>Total price</td>
+			<td>Type</td>
+			<td> Change Status</td>
+
+			<td>CurrentStatus</td>
+			<td>Action</td>
+		</tr>
+		<tr th:each="i : ${it}">
+
+			<form action="/ready">
+				<td><img th:src="@{${'/img/allimg/' + i.name +'.jpg'}}"
+					width="120"></td>
+					<td><span th:text="${i.id}"> </span></td>
+					<input type="hidden" name="idd" th:value="${i.id}"/>
+				<td><span th:text="${i.name}"> </span> <input type="hidden"
+					name="name" th:value="${i.name}" /></td>
+
+				<td><span th:text="${i.price}"> </span></td>
+				<td><span th:text="${i.qty}"> </span></td>
+				<td><span th:text="${i.user}"> </span></td>
+				<td><span th:text="${i.date}"> </span></td>
+				<td><span th:text="${i.totalPrice}"> </span></td>
+				<td><span th:text="${i.type}"> </span></td>
+                
+				<td><span> <select name="action">
+							<option value="NotPrepared">NotPrepared</option>
+							<option value="Prepared">Prepared</option>
+							<option value="notInStock">notInStock</option>
+					</select> </span></td>
+						<td><span th:text="${i.status}"> </span></td>
+			<td><input type="submit" value="Change"></td>
+			</form>
+	</table>
+</body>
+</html>
+
+

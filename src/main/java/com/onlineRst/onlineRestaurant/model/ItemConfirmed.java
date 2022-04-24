@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Component
-@Entity(name = "Items")
-public class Item {
+@Entity(name = "ItemConfirmed")
+public class ItemConfirmed {
 	
 
 	String user;

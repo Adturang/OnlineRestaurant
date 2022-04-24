@@ -4,32 +4,49 @@ package com.onlineRst.onlineRestaurant.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+
 import org.springframework.stereotype.Component;
+
+
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@NoArgsConstructor
 @Component
-@Entity(name = "Items")
-public class Item {
-	
-
-	String user;
+@Entity
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@AllArgsConstructor
+public class History {
 	@Id
 	@GeneratedValue
-	int id;
-	public String name;
-	int price;
-	int qty;
-	public String type;
-	String date;
-	String time;
-	public String status;
 
-	
+	int id;
+	  
+	String name;
+	int price;
+    String type;
+    String date;
+    int qty;
+    String status;
+   String user;
+   String time;
 	public int calculateTotalPrice() {
 		return this.getPrice()*this.getQty();
 	}
 	int totalPrice;
+
+
+
+	
+	
+
 }

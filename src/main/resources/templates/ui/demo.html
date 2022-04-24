@@ -5,6 +5,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>deleted</h1>
+	<table border="1" style="width: 300px">
+		<tr>
+			<td>Image</td>
+			<td>Name</td>
+			<td>Price</td>
+			<td>qty</td>
+			<td>User</td>
+			<td>Time</td>
+			<td>Date</td>
+			<td>Total price</td>
+			<td>Type</td>
+			<td>Status</td>
+			
+		</tr>
+		<tr th:each="i : ${hs}">
+			<td><img th:src="@{${'/img/allimg/' + i.name +'.jpg'}}"
+				width="120"></td>
+			<td><span th:text="${i.name}"> </span></td>
+
+			<td><span th:text="${i.price}"> </span></td>
+			<td><span th:text="${i.qty}"> </span></td>
+			<td><span th:text="${i.user}"> </span></td>
+			<td><span th:text="${i.time}"> </span></td>
+			<td><span th:text="${i.date}"> </span></td>
+			<td><span th:text="${i.totalPrice}"> </span></td>
+			<td><span th:text="${i.type}"> </span></td>
+			<td><span th:text="${i.status}"> </span></td>
+			
+		</tr>
+	</table>
 </body>
 </html>

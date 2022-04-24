@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/ready">
+		<h1>All item ordered</h1>
+		<select name="selected">
+			<div th:each="i : ${it}">
+		
+				<option th:value="${i.name}"><span th:text="${i.name}"></span></option>
+			
+			</div>
+		</select> 
+	
+		<select name="action">
+			<option value="NotPrepared">NotPrepared</option>
+			<option value="Prepared">Prepared</option>
+			<option value="notInStock">notInStock</option>
+		</select> <input type="submit" value="submit">
+	</form>
+</body>
+</html>
+
+

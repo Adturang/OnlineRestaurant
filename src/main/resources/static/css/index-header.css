@@ -22,7 +22,7 @@ body {
 #header-left-logo{
   padding-left: 10px;
   float: left;
-  width: 24%;
+  width: 20%;
 }
 #header-center{
   float: left;
@@ -32,12 +32,13 @@ body {
 }
 #header-rigth-user{
   float: left;
-  width:24%;
+  width:25%;
 }
 #cart{
   height: 40px;
-  padding-left:20px;
+  margin-left:40%;
   width: 40px;
+  padding-top:1%;
 }
 #user{
   height: 40px;
@@ -70,7 +71,6 @@ button{
 }
 #log{
 	position:absolute;
-	right:10%;
+	right:5%;
 	top:0%;
-	
 }

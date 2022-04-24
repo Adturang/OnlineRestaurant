@@ -7,13 +7,12 @@
 #nav-left{
     width:24%;
     float :left;
-    border: 1px dotted;
 }
 #nav-center{
     width: 50%;
     float: left;
     border: 1px solid;
-    padding-left: 5px;
+    margin-left: 25%;
     
 }
 #nav-right{
