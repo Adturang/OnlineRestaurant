@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineRst.onlineRestaurant.model.NonVegetarian;
-import com.onlineRst.onlineRestaurant.model.Vegeterian;
 @Repository
 public interface NonVegetarianRepository extends CrudRepository<NonVegetarian, Integer>{
 	 @Modifying      // to mark delete or update query

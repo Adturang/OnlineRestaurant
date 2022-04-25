@@ -11,7 +11,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.onlineRst.onlineRestaurant.model.History;
 import com.onlineRst.onlineRestaurant.model.ItemConfirmed;
 @Repository
 public interface ItemConfirmedRepository extends CrudRepository<ItemConfirmed,Integer> {

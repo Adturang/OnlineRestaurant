@@ -1,14 +1,9 @@
 package com.onlineRst.onlineRestaurant.service;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.onlineRst.onlineRestaurant.dao.ItemsRepository;
-import com.onlineRst.onlineRestaurant.dao.ProceedOrderRepository;
 import com.onlineRst.onlineRestaurant.model.Item;
-import com.onlineRst.onlineRestaurant.model.ProceedOrder;
 
 @Service
 public class ItemService {

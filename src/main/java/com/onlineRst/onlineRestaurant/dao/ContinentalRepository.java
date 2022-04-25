@@ -1,6 +1,5 @@
 package com.onlineRst.onlineRestaurant.dao;
 
-import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
