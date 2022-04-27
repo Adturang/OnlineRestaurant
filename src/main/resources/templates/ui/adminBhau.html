@@ -3,154 +3,212 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script src="/js/in.js"></script>
+<link rel="stylesheet" href="/css/admin-header.css">
+<link rel="stylesheet" href="/css/admin-center.css">
+<link rel="stylesheet" href="/css/admin-footer.css">
 </head>
 <body>
-<h1 style="text-align: center;color: red"><div th:text="${'welcome@ '+session.sesName}"></div></h1>
+	<div id="outer-div">
+		<div id="header">
+			<div id="header-left-logo">
 
-  		<form action="/showAlluser">
+				<img src="/img/res.png" alt="logo not available !" height="50px"
+					width="50px">
 
-		<input type="submit" name="sub" value="showAlluserBySortName">
-	</form>
-	<br>
-	<form action="/showAllitems">
-	<select name="type">
-				<option value="nonVeg">Non-Veg</option>
-				<option value="veg">Veg</option>
-				<option value="continental">Continnetal</option>
-				<option value="italian">Italian</option>
-				<option value="bakery">Bakery</option>
-				<option value="juices">Juices</option>
-				
-			<input type="submit" name="sub" value="showOrderedUsingType">
-	</form>
+			</div>
+			<div id="header-center">
+				<center>
+					<span id="header-title">Welcome <span>@</span>
+					</span>
+				</center>
 
-	<br>
-	<hr>
+			</div>
+			<div id="header-rigth-user">
+				<div th:text="${'Admin : '+session.sesName}" style="color: white;"
+					id="ses"></div>
 
-<!-- 	<form action="/addnewItemToList">
-		ItemType ::<input type="text" name="type"><br> ItemName
-		::<input type="text" name="name"><br> ItemPrice ::<input
-			type="number" name="price"><br> ItemID ::<input
-			type="number" name="id"><br> <input type="submit"
-			name="sub" value="AddNewItem">
-	</form> -->
-	<hr>
-	<form action="showAllitemsWehave">
+				<form action="/destroy" id="log">
+					<button>LogOut</button>
+				</form>
+				<a href="/cart"> <img src="/img/cart.png"
+					alt="image not available!" id="cart">
+				</a>
+			</div>
+		</div>
+		<span th:text="${msg1}"></span>
+		<div id="menu">
+			<div id="tbl-div">
+				<table id="tbl">
+					<tr id="tbl-tr">
+						<th id="tbl-th">Show All user</th>
+						<td id="tbl-td">
+							<form action="/showAlluser">
+								<input type="submit" name="sub" value="showAlluserBySortName">
+							</form>
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<th id="tbl-th" rowspan="2">Show By Category</th>
+						<td id="tbl-td">
+							<form action="/showAllitems">
+								<select name="type">
+								<option value="nonVeg">Non-Veg</option>
+								<option value="veg">Veg</option>
+								<option value="continental">Continnetal</option>
+								<option value="italian">Italian</option>
+								<option value="bakery">Bakery</option>
+								<option value="juices">Juices</option>
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						
+						<td id="tbl-td">
+							<input type="submit" name="sub" value="showOrderedUsingType">
+						</form>
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<th id="tbl-th">Show All Order's</th>
+						<td id="tbl-td">
+							<form action="showAllitemsWehave">
+								<input type="submit" value="showAllOrdereditems" name="itemColl">
+							</form>
+						</td>
+					</tr>
+					
+					<tr id="tbl-tr">
+						<th id="tbl-th">Show Top 3 Items</th>
+						<td id="tbl-td">
+							<form action="/top3ItemSelled">
+								<input type="submit" value="top3ITemSelled">
+							</form>
+						</td>
+					</tr>
+					
+					<tr id="tbl-tr">
+						<th id="tbl-th" rowspan="2">Show On Selected Date</th>
+						<td id="tbl-td">
+								<form action="/showWithInSpecifieddate">
+									<label for="start">Start date:</label> 
+									<input type="date"
+										name="dat" value="2018-07-22" min="2018-01-01" max="2050-12-31">
+							
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<td id="tbl-td">
+						
+								<input type="submit" value="WithInSpecifieddate">
+							</form>
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<th id="tbl-th" rowspan="3">Show On Selected Range</th>
+						<td id="tbl-td">
+							<form action="/showWithInSpecifiedRangeOfDate">
+								<label for="start">Start date:</label> 
+									<input type="date" name="initialDate" value="2022-04-15" min="2022-01-01" max="2050-12-31">
+						</td>
+					</tr>
+					<tr id="tbl-tr" >
+						<td id="tbl-td">
+								<label for="end">End date:</label> 
+									<input type="date" name="finalDate" value="2022-04-15" min="2022-01-01" max="2050-12-31"> 
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<td id="tbl-td">	
+									<input type="submit" value="WithInSpecifiedRange">
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<th id="tbl-th" rowspan="1">Add Selected Item</th>
+						<td id="tbl-td">
+							<form action="/addItem">
+								 <select name="type">
+										<option value="Non-Veg">Non-Veg</option>
+										<option value="Veg">Veg</option>
+										<option value="continental">continental</option>
+						
+									</select> 
+								<button type="submit">AddItems</button>
+								</form>
+						</td>
+					</tr>
+					
+					
+					<tr id="tbl-tr">
+						<th id="tbl-td" rowspan="2">Show Item By Selected Category</th>
+						<td id="tbl-td">
+							<form action="/showItemByCategory">
+								<select name="type">
+									<option value="Non-Veg">Non-Veg</option>
+									<option value="Veg">Veg</option>
+									<option value="continental">continental</option>
+					
+								</select> 
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<td id="tbl-td">
+							<input type="submit" value="ShowItemsInSelectedCategory">
+							</form>
+						</td>
+					</tr>
+					
+					<tr id="tbl-tr">
+						<th id="tbl-td" rowspan="2">Delete Item By Selected Category</th>
+						<td id="tbl-td">
+							<form action="/deleteItemByCategory" method="post">
+								<select name="choice">
+									<option value="Non-Veg">Non-Veg</option>
+									<option value="Veg">Veg</option>
+									<option value="continental">continental</option>
+								</select>
+						</td>
+					</tr>
+					<tr id="tbl-tr">
+						<td id="tbl-td">
+							<input type="submit" value="DeleteItemByCategory">
+							</form>
+						</td>
+					</tr>
+					
+					<tr id="tbl-tr">
+						<th id="tbl-th">Ordered Item</th>
+						<td id="tbl-td">
+							<form action="/ordererdItem">
+								<input type="hidden" value="NotComplete" name="status" />
+								<input type="submit" value="ordererdItem">
+							</form>
+						</td>
+					 </tr>
+					 
+					 <tr id="tbl-tr">
+					 <th id="tbl-th">Check Delivery Staus</th>
+						<td id="tbl-td">
+							<form action="delivery">
+								<input type="submit" value="delivery">
+							</form>
+						</td>
+					 </tr>
+					 
+					 <tr id="tbl-tr">
+					 <th id="tbl-th">Order History</th>
+						<td id="tbl-td">
+							<form action="historyForAdmin">
+								<input type="submit" value="History">
+							</form>
+						</td>
+					 </tr>
+				</table>
 
-		<input type="submit" value="showAllOrdereditems" name="itemColl">
-	</form>
-<hr>
-<form action="/top3ItemSelled">
-		<input type="submit" value="top3ITemSelled">
-		</form>
-	<hr>
-	<form action="/showWithInSpecifieddate">
-		<label for="start">Start date:</label> <input type="date" name="dat"
-			value="2018-07-22" min="2018-01-01" max="2050-12-31"> <input
-			type="submit" value="WithInSpecifieddate">
-	</form>
-	<hr>
-	<hr>
-	<div>
-		<form action="/showWithInSpecifiedRangeOfDate">
-			<label for="start">Start date:</label> 
-			<input type="date"
-				name="initialDate" value="2022-04-15" min="2022-01-01" max="2050-12-31">
-				
-			<label for="end">End date:</label> 
-			<input type="date" name="finalDate"
-				value="2022-04-15" min="2022-01-01" max="2050-12-31"> <input
-				type="submit" value="WithInSpecifiedRange">
-		</form>
-		</hr>
-
-	
-
-	
-
-
-		<hr>
-
-		<form action="/addItemasPerCategory" method="post"
-			enctype="multipart/form-data">
-			<select name="type">
-				<option value="Non-Veg">Non-Veg</option>
-				<option value="Veg">Veg</option>
-				<option value="continental">continental</option>
-
-			</select> ItemName ::<input type="text" name="name"><br>
-			ItemPrice ::<input type="number" name="price"><br>
-			ItemID ::<input type="number" name="id"><br> ItemType ::<input
-				type="file" name="file" /> <br>
-			<input type="submit"
-				value="AddItemInSelectedType">
-
-			<hr>
-			<hr>
-		</form>
-
-		<form action="/showItemByCategory">
-			<select name="choice">
-				<option value="Non-Veg">Non-Veg</option>
-				<option value="Veg">Veg</option>
-				<option value="continental">continental</option>
-
-			</select> <input type="submit" value="ShowItemsInSelectedCategory">
-		</form>
-
-		<hr>
-		<form action="/deleteItemByCategory" method="post">
-		<select name="choice">
-				<option value="Non-Veg">Non-Veg</option>
-				<option value="Veg">Veg</option>
-				<option value="continental">continental</option>
-				</select>
-				
-				<!-- 	<select name="selectedItem">
-					 <div th:each="i : ${data}">
-				<option th:value="${i.name}" > <span th:text="${i.name}"></span></option>
-				</div>
-				</select> -->
-				
-			
-		<input type="submit" value="DeleteItemByCategory">
-		</form>
-		<hr>
-		<hr>
+			</div>
+		</div>
+		<div id="footer">
 		
-		<hr>
-		<hr>
-	<!-- 		<form action="deleteItem">
-			<input type="number" name="id"
-				placeholder="enetr id to delete the product"> <input
-				type="submit" value="DeleteItemById"></input>
-		</form> -->
-		
-		
-<!-- 		<form action="deleteAnyItemById">
-		
-			<input type="number" name="id"
-				placeholder="enetr id to delete the product"> <input
-				type="submit" value="DeleteItemById"></input>
-		</form>  -->
-		<form action="/ordererdItem">
-		<input type="hidden" value="NotComplete" name="status"/>
-		<input type="submit" value="ordererdItem">
-		
-		</form>
-		<form action="delivery">
-		<input type="submit" value="delivery">
-		</form>
-		
-		
-		<form action="historyForAdmin">
-		<input type="submit" value="History">
-		</form>
-		
-		
-		
+		</div>
+	</div><!-- outer-div -->
 </body>
 </html>
-
-

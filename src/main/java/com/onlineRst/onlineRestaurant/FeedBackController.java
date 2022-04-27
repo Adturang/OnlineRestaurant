@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.onlineRst.onlineRestaurant.dao.FeedbackRepo;
+import com.onlineRst.onlineRestaurant.dao.HistoryRepository;
 import com.onlineRst.onlineRestaurant.dao.ItemsRepository;
 import com.onlineRst.onlineRestaurant.dao.RateNReviewRepo;
 import com.onlineRst.onlineRestaurant.model.Feedback;
-import com.onlineRst.onlineRestaurant.model.Item;
+import com.onlineRst.onlineRestaurant.model.History;
 import com.onlineRst.onlineRestaurant.model.RateNReview;
 
 @Controller
@@ -25,37 +26,40 @@ public class FeedBackController {
 
 	// ******************************
 		// *********By Divyansh
-		List<Item> dtanduser = new ArrayList<Item>();
+		List<History> dtanduser = new ArrayList<History>();
 		@Autowired
 		RateNReviewRepo rNReviewRepo;
 		@Autowired
 		ItemsRepository irepo;
+		@Autowired
+		HistoryRepository historyRepository;
 
 		@RequestMapping("/findByDate") // added new method By DD
-		public String rateNreview() {
+		public String rateNreview(HttpSession session) {
+			if (session.getAttribute("sesName")==null) {
+				return "ui/login";
+			}
 			return "ui/findByDate";
 		}
 
 		@RequestMapping("/findDate") // added new method By DD
-		public String findDate(@RequestParam("date") String date, Item item, Model model, HttpSession session) {
-
-			System.out.println(date);
-			System.out.println("item Odate..." + item.getDate());
-			System.out.println("userName " + session.getAttribute("sesName").toString());
-			System.out.println(irepo.findByDateAndUser(date, session.getAttribute("sesName").toString()));
-			dtanduser = irepo.findByDateAndUser(date, session.getAttribute("sesName").toString());
-			model.addAttribute("itemList", irepo.findByDateAndUser(date, session.getAttribute("sesName").toString()));
+		public String findDate(@RequestParam("date") String date, Model model, HttpSession session) {
+			if (session.getAttribute("sesName")==null) {
+				return "ui/login";
+			}
+			dtanduser = historyRepository.findByDateAndUser(date, session.getAttribute("sesName").toString());
+			model.addAttribute("itemList",dtanduser);
+			System.out.println(dtanduser+"***************");
+			System.out.println(historyRepository.findAll());
 			return "ui/rateNreview";
 		}
-
-		@RequestMapping("rv")
-		public String rv(Model model) {
-			model.addAttribute("itemList", dtanduser);
-			return "ui/rateNreview";
-		}
-
+	
 		@RequestMapping("/rateNreview") // added new by dd
-		public String rateNReview(RateNReview rateNReview, HttpSession session, Item item) {
+		public String rateNReview(RateNReview rateNReview, HttpSession session, History item,Model model) {
+			if (session.getAttribute("sesName")==null) {
+				return "ui/login";
+			}
+			dtanduser.remove(item);
 			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 			Date date = new Date();
 			System.out.println(formatter.format(date));
@@ -68,7 +72,8 @@ public class FeedBackController {
 			System.out.println("Befor delition" + dtanduser.size() + "" + dtanduser);
 			// deleteFromList(item.name);
 			System.out.println("After delition" + dtanduser.size() + "" + dtanduser);
-			return "redirect:/rv";
+			model.addAttribute("itemList",dtanduser);
+			 return "ui/rateNreview";
 		}
 
 
@@ -77,6 +82,9 @@ public class FeedBackController {
 
 		@RequestMapping("/submitFeedback")
 		public String submitFeedback(HttpSession session, Feedback feedback, Model model) {
+			if (session.getAttribute("sesName")==null) {
+				return "ui/login";
+			}
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			Date date = new Date();
 			feedback.setDate(formatter.format(date));

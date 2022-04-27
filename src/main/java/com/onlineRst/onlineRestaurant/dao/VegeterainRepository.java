@@ -20,5 +20,12 @@ public interface VegeterainRepository extends CrudRepository<Vegeterian, Integer
     @Modifying      // to mark delete or update query
     @Query(value = "DELETE FROM Vegeterian e WHERE e.name = :name")       // it will delete all the record with specific name
     int deleteByName(@Param("name") String name);
+    
+    @Query(value="select * from vegeterian where name= :name",nativeQuery=true)
+ 	public Vegeterian getItemByName(@Param("name")String name);
+   @Transactional
+   @Modifying
+   @Query(value="update Vegeterian u set u.price = :price where u.id = :id")
+   void updateMethod(@Param("price") int price,@Param("id") int id);
 	
 }

@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/css/cart-section.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<table border="1" style="width:300px">
-    <tr>
-    <td>Image</td>
-        <td> Name</td>
-        <td> Price </td>
-        <td> qty </td>
-            <td> User </td>
-            <td>Date</td>
-            <td>Total price</td>
-            <td>Type</td>
-    </tr>
- <tr th:each="i : ${itemList}">
-<td ><img th:src="@{${'/img/allimg/' + i.name +'.jpg'}}" width="120"></td>
-            <td><span th:text="${i.name}">  </span></td>
+<!-- <table border="1" style="width:300px"> -->
+<!--     <tr> -->
+<!--     <td>Image</td> -->
+<!--         <td> Name</td> -->
+<!--         <td> Price </td> -->
+<!--         <td> qty </td> -->
+<!--             <td> User </td> -->
+<!--             <td>Date</td> -->
+<!--             <td>Total price</td> -->
+<!--             <td>Type</td> -->
+<!--     </tr> -->
+<!--  <tr th:each="i : ${itemList}"> -->
+<!-- <td ><img th:src="@{${'/img/allimg/' + i.name +'.jpg'}}" width="120"></td> -->
+<!--             <td><span th:text="${i.name}">  </span></td> -->
             
-            <td><span th:text="${i.price}">  </span></td>
-               <td><span th:text="${i.qty}">  </span></td>
-                    <td><span th:text="${i.user}">  </span></td>
-                     <td><span th:text="${i.date}">  </span></td>
-                       <td><span th:text="${i.totalPrice}">  </span></td> 
-                       <td><span th:text="${i.type}">  </span></td> 
-        </tr>
-        </table>
+<!--             <td><span th:text="${i.price}">  </span></td> -->
+<!--                <td><span th:text="${i.qty}">  </span></td> -->
+<!--                     <td><span th:text="${i.user}">  </span></td> -->
+<!--                      <td><span th:text="${i.date}">  </span></td> -->
+<!--                        <td><span th:text="${i.totalPrice}">  </span></td>  -->
+<!--                        <td><span th:text="${i.type}">  </span></td>  -->
+<!--         </tr> -->
+<!--         </table> -->
+<a href="/adminBhau" style="color: red">Main Page</a>
+          <table style="color:white;" id="cart-items">
+	<tr>
+     <th class="cart-title">Item</th>
+     <th class="cart-title">Item-Name</th>
+     <th class="cart-title">Price</th>
+     <th class="cart-title">.qty</th>
+     <th class="cart-title">User</th>
+     <th class="cart-title">Date</th>
+     <th class="cart-title">Total-Price</th>
+     <th class="cart-title" colspan="3">Type</th>
+     </tr>
+     	 <tr th:each="i : ${itemList}">
+     		<td><img th:src="@{${'/img/allimg/' + i.name +'.jpg'}}" width="120"></td>
+     		<td th:text="${i.name}" class="cart-data"> </td>
+     		<td th:text="${i.price}" class="cart-data"> </td>
+     		<td th:text="${i.qty}" class="cart-data"> </td>
+     		<td th:text="${i.user}" class="cart-data"> </td>
+     		<td th:text="${i.date}" class="cart-data"> </td>
+     		<td th:text="${i.totalPrice}" class="cart-data"> </td>
+     		<td th:text="${i.type}" class="cart-data"> </td>
+     	</tr>
+     </table>	
+     		
+     		
 </body>
 </html>
 

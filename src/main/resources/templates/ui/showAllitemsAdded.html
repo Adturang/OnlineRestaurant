@@ -3,35 +3,39 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/cart-section.css">
 </head>
 <body>
-<table>
-    <tr>
-        <td> Image</td>
-        <td> Price </td>
-        <td> Name </td>
-            <td> Id </td>
-            <td>TYPE</td>
-            <td>Delete</td>
-    </tr>
-				
-			
-					<tr th:each="i : ${list}">
-						<td scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{i.image}}" style="width: 100px;height: 100px;"></td>
-						  <td><span th:text="${i.price}"> 
-               <td><span th:text="${i.name}"> 
-                    <td><span th:text="${i.id}"> 
-                    <td> <span th:text="${i.type}"></span>
-                    <td><span>
-                    <form action="/deleteByName">
-                    <input type="hidden"   th:value="${i.id}"  name="id">
-                    <input type="hidden"   th:value="${i.type}"  name="type">
-                     <input type="hidden"   th:value="${i.name}"  name="name">
-                    <input type="submit" value="DeleteMe">
-                    </form></span>
-                    </tr>
-                    </table>
-                    
-                    
-	</body>
+
+	<table style="color: white;" id="cart-items">
+		<tr>
+			<th class="cart-title">Item</th>
+			<th class="cart-title">Item-Name</th>
+			<th class="cart-title">Price</th>
+			<th class="cart-title">Id</th>
+			<th class="cart-title">Type</th>
+			<th class="cart-title">Delete</th>
+		</tr>
+		<tr th:each="i : ${list}">
+				<td scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{i.image}}"
+					style="width: 100px; height: 100px;"></td>
+				<td th:text="${i.name}" class="cart-data"><input type="hidden"
+					name="id" th:value="${i.id}" /></td>
+				<td th:text="${i.price}" class="cart-data"></td>
+				<td th:text="${i.id}" class="cart-data"></td>
+				<td th:text="${i.type}" class="cart-data"></td>
+				<td class="cart-data">
+					<form action="/deleteByName">
+						<input type="hidden" th:value="${i.id}" name="id"> <input
+							type="hidden" th:value="${i.type}" name="type"> <input
+							type="hidden" th:value="${i.name}" name="name"> <input
+							type="submit" value="DeleteMe">
+					</form>
+
+				</td>
+			</form>
+		</tr>
+	</table>
+
+</body>
 	</html>

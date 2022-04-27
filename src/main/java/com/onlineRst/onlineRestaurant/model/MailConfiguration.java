@@ -1,4 +1,4 @@
-package com.onlineRst.onlineRestaurant.config;
+package com.onlineRst.onlineRestaurant.model;
 
 import java.util.Properties;
 

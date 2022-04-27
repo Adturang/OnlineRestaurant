@@ -1,6 +1,5 @@
 package com.onlineRst.onlineRestaurant.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,10 +26,8 @@ import lombok.ToString;
 public class AlltemAdded {
 	@Id
 	@GeneratedValue
-
-
 	int id;
-
+	@Column(unique = true)
 	String name;
 	int price;
 	String type;

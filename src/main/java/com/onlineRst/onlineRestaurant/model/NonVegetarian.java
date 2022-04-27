@@ -26,12 +26,11 @@ import lombok.ToString;
 public class NonVegetarian {
 	@Id
 	@GeneratedValue
-
-	
 	int id;
+	@Column(unique = true)
 	String name;
 	int price;
-    String type;
+	String type;
 
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")

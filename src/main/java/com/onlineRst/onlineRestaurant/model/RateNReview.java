@@ -1,11 +1,9 @@
 package com.onlineRst.onlineRestaurant.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.IdClass;
 import org.springframework.stereotype.Component;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,14 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Component
 @Entity
+@IdClass(RateNReviewId.class)
 public class RateNReview {
 	int rating;
 	String review;
 	@Id
-	@GeneratedValue
-	int id;
 	String user;
 	String oDate;
+	@Id
 	String curDate;
+	@Id
 	String name;
 }

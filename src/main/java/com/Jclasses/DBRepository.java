@@ -22,7 +22,7 @@ public class DBRepository {
 		try {
 			CON=new GetConnectionObject().getConnectionObj();
 			
-			String query="select * ,count(*) AS cnt from items group by name order by cnt desc limit 3";
+			String query="select * ,count(*) AS cnt from history group by name order by cnt desc limit 3";
 			ST=CON.createStatement();
 			RS=ST.executeQuery(query);
 			

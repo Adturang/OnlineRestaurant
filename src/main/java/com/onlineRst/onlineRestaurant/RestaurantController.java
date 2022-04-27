@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.onlineRst.onlineRestaurant.dao.ContinentalRepository;
 import com.onlineRst.onlineRestaurant.dao.ItemsRepository;
+import com.onlineRst.onlineRestaurant.dao.NonVegetarianRepository;
 import com.onlineRst.onlineRestaurant.dao.RegistrationRepository;
+import com.onlineRst.onlineRestaurant.dao.VegeterainRepository;
 import com.onlineRst.onlineRestaurant.model.Item;
 import com.onlineRst.onlineRestaurant.model.Registration;
 import com.onlineRst.onlineRestaurant.model.TimeDeleter;
@@ -24,6 +28,12 @@ import com.onlineRst.onlineRestaurant.service.ItemService;
 @Controller
 public class RestaurantController {
 
+	@Autowired
+	VegeterainRepository vegeterainRepository;
+	@Autowired
+	ContinentalRepository continentalRepository;
+	@Autowired
+	NonVegetarianRepository nonVegetarianRepository;
 	@Autowired
 	ItemService itemService;
 	@Autowired
@@ -100,6 +110,26 @@ public class RestaurantController {
 		recentMapping = "veg";
 		return "ui/Veg";
 	}
+	
+	@RequestMapping("/newVeg")
+	public String newVeg(Model model) {
+		model.addAttribute("newList",vegeterainRepository.findAll());
+		recentMapping = "veg";
+		return "ui/NewItems";
+	}
+	@RequestMapping("/newNonVeg")
+	public String newNonVeg(Model model) {
+		model.addAttribute("newList",nonVegetarianRepository.findAll());
+		recentMapping = "NonVeg";
+		return "ui/NewItems";
+	}
+	
+	@RequestMapping("/newContinental")
+	public String newConti(Model model) {
+		model.addAttribute("newList",continentalRepository.findAll());
+		recentMapping = "continental";
+		return "ui/NewItems";
+	}
 
 	@RequestMapping("/nonVeg")
 	public String nonVeg() {
@@ -138,7 +168,9 @@ public class RestaurantController {
 
 	@RequestMapping("/addToCart")
 	public String addToCart(Item item, HttpSession session, Model model) {
-		if (itemList.isEmpty() || !(new DataFinder().isPresent(itemList, item.getName()))) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 			item.setUser(session.getAttribute("sesName").toString());
 			item.setType(recentMapping);// hatao in add to own
 			Date date = new Date();
@@ -162,17 +194,10 @@ public class RestaurantController {
 				irepo.save(item);
 				Calendar date1 = Calendar.getInstance();
 				long timeInSecs = date1.getTimeInMillis();
-				Date afterAdding = new Date(timeInSecs + (2 * 60 * 1000));
+				Date afterAdding = new Date(timeInSecs + (1 * 60 * 1000));
 				Timer tm = new Timer("timer-"+item.getId());
-				tm.schedule(new TimeDeleter(irepo,item.getId()),afterAdding );
+				tm.schedule(new TimeDeleter(repo,irepo,item.getId()),afterAdding );	
 			}
-			// itemList.add(item);
-			System.out.println("-----------" + item);
-			// System.out.println(itemList.size());
-		} else {
-			session.setAttribute("msg",
-					recentMapping + " " + item.getName() + " Already Added To Your Cart From" + recentMapping);
-		}
 		return "redirect:/" + recentMapping;
 	}
 	

@@ -8,8 +8,6 @@ import javax.persistence.Lob;
 
 import org.springframework.stereotype.Component;
 
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -28,14 +26,12 @@ import lombok.ToString;
 public class Vegeterian {
 	@Id
 	@GeneratedValue
-
 	int id;
-	  
+	@Column(unique = true)
 	String name;
 	int price;
-    String type;
-    String date;
-
+	String type;
+	String date;
 
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")

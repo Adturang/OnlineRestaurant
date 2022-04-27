@@ -18,5 +18,12 @@ public interface AllItemRepository extends CrudRepository<AlltemAdded ,Integer> 
 	   @Modifying      // to mark delete or update query
 	    @Query(value = "DELETE FROM AlltemAdded e WHERE e.name = :name")       // it will delete all the record with specific name
 	    int deleteByName(@Param("name") String name);
+	 
+	 @Query(value="select * from AlltemAdded where name= :name",nativeQuery=true)
+  	 public AlltemAdded getItemByName(@Param("name")String name);
+    @Transactional
+    @Modifying
+    @Query(value="update AlltemAdded u set u.price = :price where u.id = :id")
+    void updateMethod(@Param("price") int price,@Param("id") int id);
 }
 	 

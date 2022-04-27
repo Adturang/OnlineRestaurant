@@ -28,6 +28,9 @@ input{
      width: 250px;
      
 }
+#one{
+	width: 250px;
+}
 .title{
     font-weight: bold;
     margin: 20px;

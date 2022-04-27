@@ -17,7 +17,7 @@ import com.onlineRst.onlineRestaurant.model.Continental;
 public class ContinentalService {
 	@Autowired
 	private ContinentalRepository repository;
-	public void saveProductToDB(MultipartFile file,String name,int price,int id,String type ) {
+	public void saveProductToDB(MultipartFile file,String name,int price,String type ) {
 		Continental chinese=new Continental();
 		String fileName=StringUtils.cleanPath(file.getOriginalFilename());
 	   	System.out.println(fileName);
@@ -31,7 +31,6 @@ public class ContinentalService {
 		
 			e.printStackTrace();
 		}
-		chinese.setId(id);
 		chinese.setName(name);
         chinese.setPrice(price);
         chinese.setType(type);

@@ -34,30 +34,29 @@ public class CartController {
 	ItemConfirmedService itemConfirmedService;
 	@Autowired
 	HistoryRepository historyRepository;
+
 	
 	@RequestMapping("/cart")
 	public String cart(Model model, HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		List<Item> itemlist = irepo.findAllByuserName(session.getAttribute("sesName").toString());
-		itemlist.forEach(k -> {
-			System.out.println(k);
-		});
 		long totalCost = 0;
 		if (itemlist.isEmpty()) {
 			model.addAttribute("toCost", totalCost);
 		} else {
 			for (Item item : itemlist) {
 				totalCost += item.getTotalPrice();
-
 			}
 
 			model.addAttribute("toCost", totalCost);
 		}
-		model.addAttribute("ilist", irepo.findAllByuserName(session.getAttribute("sesName").toString()));
+		model.addAttribute("ilist", itemlist);
 		Iterable<ItemConfirmed> g = confirmedRepository.findAllByuserName(session.getAttribute("sesName").toString());
 		long totalCostforConfirmed = 0;
 		for (ItemConfirmed item : g) {
 			totalCostforConfirmed += item.getTotalPrice();
-
 		}
 		model.addAttribute("sum", totalCostforConfirmed + totalCost);
 		model.addAttribute("confirmtoCost", totalCostforConfirmed);
@@ -67,17 +66,20 @@ public class CartController {
 	}
 	
 	@RequestMapping("/edit")
-	public String edit(@ModelAttribute("SpringWeb") Item item, Model model) {
-		System.out.println("checking id " + item.getId());
-		System.out.println("checking id " + item.getName());
+	public String edit(@ModelAttribute("SpringWeb") Item item, Model model,HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		model.addAttribute("item", item);
-		// irepo.findByItemAndUser(item.getUser(), item.getName());
-		// irepo.getItemByName(item.getName());
+
 		return "ui/editCart";
 	}
 	
-	@RequestMapping("/demo")
-	public String demoCheckl(Model model, @ModelAttribute("SpringWeb") Item item) {
+	@RequestMapping("/setQty")
+	public String demoCheckl(Model model, @ModelAttribute("SpringWeb") Item item,HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		int p = item.calculateTotalPrice();
 		item.setTotalPrice(p);
 
@@ -87,8 +89,10 @@ public class CartController {
 	}
 	
 	@RequestMapping("/cancel")
-	public String cancel(@ModelAttribute("SpringWeb") Item item) {
-
+	public String cancel(@ModelAttribute("SpringWeb") Item item,HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		System.out.println(item);
 		irepo.deleteByNameAndUser(item.getName(), item.getUser());
 		// itemList.remove(item);
@@ -96,7 +100,10 @@ public class CartController {
 	}
 
 	@RequestMapping("/cancelConfirmed")
-	public String cancelConfirmed(@ModelAttribute("SpringWeb") ItemConfirmed ic) {
+	public String cancelConfirmed(@ModelAttribute("SpringWeb") ItemConfirmed ic,HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		confirmedRepository.deleteByNameAndUser(ic.getName(), ic.getUser());
 
 		// itemList.remove(item);
@@ -105,12 +112,18 @@ public class CartController {
 
 	@RequestMapping("/cancelAllItems")
 	public String cancelAllItems(HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		irepo.deleteByUser(session.getAttribute("sesName").toString());
 		// itemList.remove(item);
 		return "redirect:/" + "cart";
 	}
 	@RequestMapping("/cancelAllConfirmedOerder")
 	public String cancelAllConfirmedOerder(HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		confirmedRepository.deleteByUser(session.getAttribute("sesName").toString());
 		// itemList.remove(item);
 		return "redirect:/" + "cart";
@@ -118,7 +131,10 @@ public class CartController {
 	
 	
 	@RequestMapping("/ordered")
-	public String ordered(Item item, Model model, HttpServletRequest req) {
+	public String ordered(Item item, Model model, HttpServletRequest req,HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		item.setStatus("confirmed");
 		System.out.println(item);
 		int op = item.calculateTotalPrice();
@@ -143,6 +159,9 @@ public class CartController {
 	OwnRepo ownRepo; 
 	@RequestMapping("/addOwnRecipe") // added new method By DD
 	public String addOwnRecipe(OwnRecipe recipe, Item item, HttpSession session, Model model) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		if (recList.isEmpty() || !(new DataFinder().isExist(recList, recipe.getName()))) {
 			recipe.setUName(session.getAttribute("sesName").toString());
 			item.setUser(session.getAttribute("sesName").toString());
@@ -175,8 +194,20 @@ public class CartController {
 	
 	@RequestMapping("/history")
 	public String checkHistory(Model model, HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
 		System.out.println(historyRepository.findAll());
 		model.addAttribute("hs", historyRepository.findAllByuserName(session.getAttribute("sesName").toString()));
 		return "ui/demo";
+	}
+	
+	@RequestMapping("/ownHistory")
+	public String ownHistory(Model model, HttpSession session) {
+		if (session.getAttribute("sesName")==null) {
+			return "ui/login";
+		}
+		model.addAttribute("oh", ownRepo.findAllByuserName(session.getAttribute("sesName").toString()));
+		return "ui/ownHistory";
 	}
 }

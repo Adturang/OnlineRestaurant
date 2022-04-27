@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ,xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container my-2">
+
+			class="btn btn-primary">Add</a>
+			<table border="" class="table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th>PictureOfItem</th>
+						<th>Name Of Item</th>
+						<th>Price Of item</th>
+						<th>Type</th>
+					
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item:${itemList}">
+						<td scope="row"><img alt=""
+						 th:src="*{'data:image/jpeg;base64,'+{item.image}}"
+						 style="width: 100px; height: 100px;"></td>
+						 <td th:text="${item.name}"></td>
+						 <td th:text="${item.price}"></td>
+						 <td th:text="${item.type}"></td>
+						 <input type="hidden" name="type" th:value="${item.type}"/>
+					   
+						 
+					</tr>
+			</tbody>
+			
+		</table>
+		
+	<a href="/move">BackToPage</a>
+	</div>
+</body>
+</html>

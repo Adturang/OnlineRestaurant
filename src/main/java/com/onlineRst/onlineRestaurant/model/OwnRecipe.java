@@ -17,9 +17,9 @@ public class OwnRecipe {
 	@Id
 	@GeneratedValue
 	int id;
-	String uName;
-	String name;
-	String recDesc;
+	public String uName;
+	public String name;
+	public String recDesc;
 	String type;
 	String date;
 	int price;

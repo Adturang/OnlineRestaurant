@@ -15,7 +15,7 @@ import com.onlineRst.onlineRestaurant.model.AlltemAdded;
 public class AllItemService {
 	@Autowired
 	AllItemRepository repository;
-	public void saveProductToDB(MultipartFile file,String name,int price,int id,String type ) {
+	public void saveProductToDB(MultipartFile file,String name,int price,String type ) {
 		AlltemAdded added=new AlltemAdded();
 		String fileName=StringUtils.cleanPath(file.getOriginalFilename());
 	   	System.out.println(fileName);
@@ -29,7 +29,6 @@ public class AllItemService {
 		
 			e.printStackTrace();
 		}
-		added.setId(id);
 		added.setName(name);
 		added.setPrice(price);
 		added.setType(type);

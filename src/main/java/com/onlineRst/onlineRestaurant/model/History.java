@@ -28,7 +28,6 @@ import lombok.ToString;
 public class History {
 	@Id
 	@GeneratedValue
-
 	int id;
 	  
 	String name;
@@ -37,8 +36,8 @@ public class History {
     String date;
     int qty;
     String status;
-   String user;
-   String time;
+    String user;
+    String time;
 	public int calculateTotalPrice() {
 		return this.getPrice()*this.getQty();
 	}

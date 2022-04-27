@@ -20,5 +20,13 @@ public interface NonVegetarianRepository extends CrudRepository<NonVegetarian, I
 	    @Modifying      // to mark delete or update query
 	    @Query(value = "DELETE FROM NonVegetarian e WHERE e.name = :name")       // it will delete all the record with specific name
 	    int deleteByName(@Param("name") String name);
+	    
+	    @Query(value="select * from NonVegetarian where e.name= :name",nativeQuery=true)
+	  	 public NonVegetarian getItemByName(@Param("name")String name);
+	 
+	    @Transactional
+	    @Modifying
+	    @Query(value="update NonVegetarian u  set u.price = :price where u.id = :id")
+	    void updateMethod(@Param("price") int price,@Param("id") int id);
 
 }

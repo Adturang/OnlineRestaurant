@@ -15,7 +15,7 @@ import com.onlineRst.onlineRestaurant.model.NonVegetarian;
 public class NonVegetarianService {
 	@Autowired
 	private NonVegetarianRepository repository;
-	public void saveProductToDB(MultipartFile file,String name,int price,int id,String type) {
+	public void saveProductToDB(MultipartFile file,String name,int price,String type) {
 		NonVegetarian nonvegeterian=new NonVegetarian();
 		String fileName=StringUtils.cleanPath(file.getOriginalFilename());
 	   	System.out.println(fileName);
@@ -29,7 +29,6 @@ public class NonVegetarianService {
 		
 			e.printStackTrace();
 		}
-		nonvegeterian.setId(id);
         nonvegeterian.setName(name);
         nonvegeterian.setPrice(price);
          nonvegeterian.setType(type);

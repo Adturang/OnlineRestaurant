@@ -15,7 +15,7 @@ import com.onlineRst.onlineRestaurant.model.Vegeterian;
 public class VegetarianService {
 	@Autowired
 	private VegeterainRepository repository;
-	public void saveProductToDB(MultipartFile file,String name,int price,int id,String type) {
+	public void saveProductToDB(MultipartFile file,String name,int price,String type) {
 		
 		Vegeterian vegeterian=new Vegeterian();
 		String fileName=StringUtils.cleanPath(file.getOriginalFilename());
@@ -30,7 +30,6 @@ public class VegetarianService {
 		
 			e.printStackTrace();
 		}
-		vegeterian.setId(id);
         vegeterian.setName(name);
          vegeterian.setPrice(price);
   

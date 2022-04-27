@@ -3,7 +3,6 @@ import java.util.TimerTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.onlineRst.onlineRestaurant.dao.ItemsRepository;
 import com.onlineRst.onlineRestaurant.dao.RegistrationRepository;
-import com.onlineRst.onlineRestaurant.service.MailService;
 
 
 public class TimeDeleter extends TimerTask {
@@ -16,8 +15,9 @@ public class TimeDeleter extends TimerTask {
 	int id;
 
 	
-	public TimeDeleter(ItemsRepository irepo2, int id2) {
+	public TimeDeleter(RegistrationRepository  registrationRepository,ItemsRepository irepo2, int id2) {
 		// TODO Auto-generated constructor stub
+		this.regRepo=registrationRepository;
 		this.irepo=irepo2;
 		this.id=id2;
 	}
@@ -30,12 +30,14 @@ public class TimeDeleter extends TimerTask {
 			irepo.delete(item);
 			
 			////email
-				Mail mail = new Mail();
-		        mail.setMailFrom("adturang@gmail.com");
-		        mail.setMailTo(regRepo.getRegistrationByUsername(item.getUser()).getEmail());
-		        mail.setMailSubject("Your "+item.getName()+" Order Deleted- Expired");
-		        mail.setMailContent("Sorry ,We did not get your confirmation on "+item.getName()+" within time that's why its automatically deleted..Thank you for visiting");		       
-		        mailService.sendEmail(mail);
+//				Mail mail = new Mail();
+//		        mail.setMailFrom("adturang@gmail.com");
+//		        String mailAddr=regRepo.getRegistrationByUsername(item.getUser()).getEmail();
+//		        System.out.println(mail+" xoxoxoxoxox  "+mailAddr);
+//		        mail.setMailTo("prashantshindeaz3@gmail.com");
+//		        mail.setMailSubject("Your "+item.getName()+" Order Deleted- Expired");
+//		        mail.setMailContent("Sorry ,We did not get your confirmation on "+item.getName()+" within time that's why its automatically deleted..Thank you for visiting");		       
+//		        mailService.sendEmail(mail);
 			
 			///
 		}

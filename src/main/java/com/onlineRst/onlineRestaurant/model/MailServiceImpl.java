@@ -1,4 +1,4 @@
-package com.onlineRst.onlineRestaurant.service;
+package com.onlineRst.onlineRestaurant.model;
 
 import java.io.UnsupportedEncodingException;
 
@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
-import com.onlineRst.onlineRestaurant.model.Mail;
 
 
  

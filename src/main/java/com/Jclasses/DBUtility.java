@@ -11,7 +11,7 @@ public class DBUtility {
 	static {
 		try {
 			Connection con=new GetConnectionObject().getConnectionObj();
-			preparedStatementMap.put("insertIntoArrival", con.prepareStatement("select name ,count(*) AS cnt from items\r\n" + 
+			preparedStatementMap.put("insertIntoArrival", con.prepareStatement("select name ,count(*) AS cnt from history \r\n" + 
 					"group by name\r\n" + 
 					"order by cnt desc limit 3"));
 //			preparedStatementMap.put("insertIntoValidRecord", con.prepareStatement("insert into ?values((select file_id from arrival_records where file_name=?),?,?,?)"));

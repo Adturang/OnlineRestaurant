@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -29,7 +30,7 @@
      </tr>
      	
      </table>
-    <form action="/demo" th:object="${item}">
+    <form action="/setQty" th:object="${item}">
     <h2>Edit Cart</h2>
                 <input type="hidden" name="id" th:value="${item.id}">
 		     	<input type="hidden" name="name" th:value="${item.name}">
