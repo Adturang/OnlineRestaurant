@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,7 @@ import com.onlineRst.onlineRestaurant.dao.OwnRepo;
 import com.onlineRst.onlineRestaurant.model.Item;
 import com.onlineRst.onlineRestaurant.model.ItemConfirmed;
 import com.onlineRst.onlineRestaurant.model.OwnRecipe;
+import com.onlineRst.onlineRestaurant.model.TimeDeleterConfirmed;
 import com.onlineRst.onlineRestaurant.service.ItemConfirmedService;
 
 @Controller
@@ -82,9 +84,7 @@ public class CartController {
 		}
 		int p = item.calculateTotalPrice();
 		item.setTotalPrice(p);
-
 		irepo.save(item);
-
 		return "redirect:/" + "cart";
 	}
 	
@@ -139,18 +139,23 @@ public class CartController {
 		System.out.println(item);
 		int op = item.calculateTotalPrice();
 		item.setTotalPrice(op);
-
 		itemConfirmedService.saveProductToDB(item.getId(), item.getDate(), item.getName(), item.getPrice(),
-				item.getType(), item.getQty(), item.getTotalPrice(), item.getStatus(), item.getTime(), item.getUser());
+		item.getType(), item.getQty(), item.getTotalPrice(), item.getStatus(), item.getTime(), item.getUser());
 		String name = req.getParameter("name");
 		System.out.println("Checking " + name);
-
+		ItemConfirmed itemConfirmed=itemConfirmedRepository.findByItemAndUser(item.getName(), item.getUser());
+		Calendar date1 = Calendar.getInstance();
+		long timeInSecs = date1.getTimeInMillis();
+		Date afterAdding = new Date(timeInSecs + (1 * 60 * 1000));
+		Timer tm = new Timer("timer-"+item.getId());
+		tm.schedule(new TimeDeleterConfirmed(itemConfirmedRepository,itemConfirmed.getId()),afterAdding );	
 		// irepo.deleteByName(name);
 		irepo.deleteByName(item.getName());
 
 		return "redirect:/" + "cart";
 	}
-	
+	@Autowired
+	ItemConfirmedRepository itemConfirmedRepository;
 	
 	//************ByDivyansh
 	

@@ -404,7 +404,7 @@ public class AdminController {
 		ic.setStatus("Deliverd");
 
 		historyService.saveProductToDB(ic.getId(), ic.getDate(), ic.getName(), ic.getPrice(), ic.getType(), ic.getQty(),
-				ic.getTotalPrice(), ic.getStatus(), ic.getTime(), ic.getUser());
+										ic.getTotalPrice(), ic.getStatus(), ic.getTime(), ic.getUser());
 
 		confirmedRepository.deleteById(id0);
 		//Email Part

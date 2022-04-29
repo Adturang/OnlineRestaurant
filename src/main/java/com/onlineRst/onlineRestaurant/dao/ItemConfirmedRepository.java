@@ -1,7 +1,5 @@
 package com.onlineRst.onlineRestaurant.dao;
 
-
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -35,7 +33,8 @@ public interface ItemConfirmedRepository extends CrudRepository<ItemConfirmed,In
 	@Query("select u from ItemConfirmed u where u.user=:k")
 	public List<ItemConfirmed> findAllByuserName(@Param("k")String user);
 	
-	
+	@Query("select u from ItemConfirmed u where u.name=:name and u.user=:user")
+	public ItemConfirmed findByItemAndUser(@Param("name")String name,@Param("user")String user);
 	
 	 
     @Transactional

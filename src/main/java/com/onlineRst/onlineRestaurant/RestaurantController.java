@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ import com.onlineRst.onlineRestaurant.dao.RegistrationRepository;
 import com.onlineRst.onlineRestaurant.dao.VegeterainRepository;
 import com.onlineRst.onlineRestaurant.model.Item;
 import com.onlineRst.onlineRestaurant.model.Registration;
-import com.onlineRst.onlineRestaurant.model.TimeDeleter;
 import com.onlineRst.onlineRestaurant.service.ItemService;
 
 @Controller
@@ -76,7 +74,7 @@ public class RestaurantController {
 		String res = new DBCheck().isAuthorized(username, password, repo);
 		System.out.println(res);
 		if (res.equals("invalid")) {
-			return "ui/login";
+			return  "redirect:"+"http://localhost:4200/";
 		} else if (res.equals("Admin")) {
 			session.setAttribute("sesName", username);
 			return "ui/adminBhau";
@@ -95,14 +93,14 @@ public class RestaurantController {
 		} else {
 			session.setAttribute("msg", "Somethong Went wrong.!!!");
 		}
-		return "redirect:/showLoginForm";
+		return "redirect:"+"http://localhost:4200/assets/user-login.html";
 	}
 
 	@RequestMapping("/destroy")
 	public String destroySession(HttpSession request) {
 		System.out.println("inside destroy");
 		request.invalidate();
-		return "redirect:/";
+		return  "redirect:"+"http://localhost:4200/";
 	}
 
 	@RequestMapping("/veg")
@@ -192,11 +190,6 @@ public class RestaurantController {
 			if (listToCheckDuplicate.size() == 0) {
 				System.out.println("item size " + listToCheckDuplicate.size());
 				irepo.save(item);
-				Calendar date1 = Calendar.getInstance();
-				long timeInSecs = date1.getTimeInMillis();
-				Date afterAdding = new Date(timeInSecs + (1 * 60 * 1000));
-				Timer tm = new Timer("timer-"+item.getId());
-				tm.schedule(new TimeDeleter(repo,irepo,item.getId()),afterAdding );	
 			}
 		return "redirect:/" + recentMapping;
 	}
